@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../../../assets/logos/footer.png";
+import logo from "../../../assets/logos/footer-logo.png";
 const Footer = () => {
   return (
     <div className="bg-black">
@@ -13,7 +13,7 @@ const Footer = () => {
               title="Ambulace Services"
               class="inline-flex items-center"
             >
-              <Image src={logo} className="w-44 h-full"></Image>
+              <Image src={logo} className="w-32 h-full"></Image>
             </Link>
             <div className="mt-6 lg:max-w-sm">
               <p className="text-sm text-white">

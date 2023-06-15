@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
-import logo from "../../../assets/logos/main-logo.png";
+import logo from "../../../assets/logos/navbar-logo.png";
 import Image from "next/image";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,7 +50,7 @@ const Navbar = () => {
             title="Ambulace Services"
             class="inline-flex items-center"
           >
-            <Image src={logo} className="w-44 h-full"></Image>
+            <Image src={logo} className="w-32 h-full"></Image>
           </Link>
           <ul class="flex items-center hidden space-x-8 lg:flex">{menu}</ul>
           <ul class="flex items-center hidden space-x-8 lg:flex">
