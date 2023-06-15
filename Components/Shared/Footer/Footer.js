@@ -21,7 +21,7 @@ const Footer = () => {
                 dedicated to providing prompt and professional emergency medical
                 care to our community. Our team of highly trained paramedics and
                 emergency medical technicians is ready to assist you in times of
-                need.
+                need
               </p>
             </div>
           </div>
