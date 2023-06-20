@@ -9,7 +9,7 @@ const Navbar = () => {
       <li>
         <Link
           href="/"
-          class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-primary"
+          class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-secondary"
         >
           Home
         </Link>
@@ -17,7 +17,7 @@ const Navbar = () => {
       <li>
         <Link
           href="/services"
-          class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-primary"
+          class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-secondary"
         >
           Services
         </Link>
@@ -25,7 +25,7 @@ const Navbar = () => {
       <li>
         <Link
           href="/about"
-          class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-primary"
+          class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-secondary"
         >
           About Us
         </Link>
@@ -33,7 +33,7 @@ const Navbar = () => {
       <li>
         <Link
           href="/blogs"
-          class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-primary"
+          class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-secondary"
         >
           Blogs
         </Link>
