@@ -7,7 +7,7 @@ const BookIndex = () => {
   return (
     <div className="my-14">
       <div>
-        <section className="max-w-4xl p-6 mx-auto bg-secondary rounded-md shadow-md dark:bg-gray-800 mt-5">
+        <section className="max-w-4xl p-6 mx-auto bg-green-500 rounded-md shadow-md dark:bg-gray-800 mt-5">
           <h1 className="text-xl font-bold text-white capitalize dark:text-white">
             Booking Details
           </h1>
@@ -94,7 +94,7 @@ const BookIndex = () => {
               </label>
               <div className="relative">
                 <DatePicker
-                id="mydate"
+                  id="mydate"
                   className="py-2 border rounded-md w-full px-4"
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
