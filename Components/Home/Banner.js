@@ -1,7 +1,11 @@
 import Image from "next/image";
 import banner from "../../assets/banner.jpg";
+import { useContext } from "react";
+import { AuthContext } from "../Context/AuthProvider/AuthProvider";
 
 const Banner = () => {
+  const { test } = useContext(AuthContext);
+  console.log(test);
   return (
     <div>
       <div className="mt-3">
