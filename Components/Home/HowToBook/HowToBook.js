@@ -19,9 +19,11 @@ const HowToBook = () => {
                 How to Book Option
               </button>
             </Link>
+
             <button className="btn btn-secondary w-full h-20 my-4 text-black">
               Second Option -2
             </button>
+
             <button className="btn btn-warning w-full h-20 my-4 text-black">
               Third Option -3
             </button>

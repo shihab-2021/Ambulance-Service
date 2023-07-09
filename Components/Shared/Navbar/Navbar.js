@@ -1,9 +1,25 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import logo from "../../../assets/logos/navbar-logo.png";
 import Image from "next/image";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { loginWithGoogle } = useContext(AuthContext);
+  const hangleLoginWithGoogle = () => {
+    loginWithGoogle()
+      .then((result) => {
+        // The signed-in user info.
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  };
   const menu = (
     <>
       <li>
@@ -55,14 +71,14 @@ const Navbar = () => {
           <ul class="flex items-center hidden space-x-8 lg:flex">{menu}</ul>
           <ul class="flex items-center hidden space-x-8 lg:flex">
             <li>
-              <a
-                href="/"
+              <button
+                onClick={hangleLoginWithGoogle}
                 class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-primary hover:bg-secondary focus:shadow-outline focus:outline-none"
                 aria-label="Login"
                 title="Login"
               >
                 Log In
-              </a>
+              </button>
             </li>
           </ul>
           <div class="lg:hidden">
