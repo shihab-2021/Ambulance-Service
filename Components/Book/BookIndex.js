@@ -9,7 +9,7 @@ const BookIndex = () => {
       <div>
         <section className="max-w-4xl p-6 mx-auto bg-secondary rounded-md shadow-md dark:bg-gray-800 mt-5">
           <h1 className="text-xl font-bold text-white capitalize dark:text-white">
-            Booking Details
+            Booking Details.
           </h1>
           <form>
             <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
