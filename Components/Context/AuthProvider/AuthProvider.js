@@ -1,24 +1,12 @@
-import React, { createContext, useState } from "react";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
-import app from "../../Firebase/firebase.config";
-export const AuthContext = createContext();
-const auth = getAuth(app);
-const AuthProvider = ({ children }) => {
-  const [loading, setLoading] = useState(true);
-  const provider = new GoogleAuthProvider();
-  //login with google
-  const loginWithGoogle = () => {
-    setLoading(true);
-    return signInWithPopup(auth, provider);
-  };
+import React, { createContext } from "react";
+import useFirebase from "../useFirebase";
 
-  const authInfo = {
-    loginWithGoogle,
-    loading,
-    test: "test",
-  };
+export const AuthContext = createContext(null);
+
+const AuthProvider = ({ children }) => {
+  const allContexts = useFirebase();
   return (
-    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={allContexts}>{children}</AuthContext.Provider>
   );
 };
 

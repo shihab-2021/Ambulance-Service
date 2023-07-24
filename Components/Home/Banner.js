@@ -5,7 +5,6 @@ import { AuthContext } from "../Context/AuthProvider/AuthProvider";
 
 const Banner = () => {
   const { test } = useContext(AuthContext);
-  console.log(test);
   return (
     <div>
       <div className="mt-3">

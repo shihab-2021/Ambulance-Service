@@ -18,15 +18,6 @@ export default function Home() {
   );
 }
 
-
-
-
-
-
-
-
-
-
 //  <Navbar />
 //       <div>
 //         <HomeIndex />
