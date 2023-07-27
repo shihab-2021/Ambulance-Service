@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import logo from "../../../assets/logos/navbar-logo.png";
 import PopupImg from "../../../assets/hero-banner.jpg";
 import Image from "next/image";
@@ -12,9 +12,20 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [signupOpen, setSignupOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
-  const { user, logout, userInfo } = useAuth();
+  const { user, logout } = useAuth();
+  const [userInfo, setUserInfo] = useState();
 
-  console.log(user);
+  useEffect(() => {
+    console.log(
+      `https://rescue-reach-server.vercel.app/users-data/${user?.email}`
+    );
+    fetch(`https://rescue-reach-server.vercel.app/users-data/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => setUserInfo(data))
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }, [user, user?.email]);
   const [isSignupPopupOpen, setSignupPopupOpen] = useState(false);
   const [selectedUserType, setSelectedUserType] = useState(null);
 
@@ -129,12 +140,42 @@ const Navbar = () => {
           <ul class=" items-center hidden space-x-8 lg:flex">{menu}</ul>
           <ul class=" items-center hidden space-x-8 lg:flex">
             {user?.email && (
-              <button
-                onClick={logout}
-                class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-primary hover:bg-secondary focus:shadow-outline focus:outline-none mr-4"
-              >
-                Log out
-              </button>
+              <div className="group relative inline-block">
+                <button className="link-item">
+                  <a className="text-black font-medium text-lg font-serif dark:text-white px-5 py-3 rounded-md hover:bg-white/5 inline-flex items-center">
+                    <span className="mr-1 pr-4">
+                      <img
+                        style={{ height: "40px", width: "40px" }}
+                        className="link-item inline-flex items-center rounded-full object-cover"
+                        src={
+                          userInfo?.image
+                            ? userInfo?.image
+                            : `https://i.ibb.co/DMYmT3x/Generic-Profile.jpg`
+                        }
+                        alt=""
+                      />
+                    </span>
+                    <span className="h-4 w-1 fill-current"></span>
+                  </a>
+                </button>
+                <ul className="absolute hidden pt-1 text-gray-700 group-hover:block">
+                  <li className="">
+                    <Link href={`/user/${userInfo?._id}`}>
+                      <p className="whitespace-no-wrap block rounded-t bg-gray-200 py-2 px-4 hover:bg-gray-400">
+                        My Profile
+                      </p>
+                    </Link>
+                  </li>
+                  <li className="">
+                    <p
+                      onClick={() => logout()}
+                      className="whitespace-no-wrap block rounded-b bg-gray-200 py-2 px-4 hover:bg-gray-400 cursor-pointer"
+                    >
+                      Logout
+                    </p>
+                  </li>
+                </ul>
+              </div>
             )}
             {!user?.email && (
               <li>

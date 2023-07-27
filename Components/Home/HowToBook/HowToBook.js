@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 const Map = dynamic(() => import("../Map/Map"), {
   ssr: false,
 });
-
+const apikey = "AIzaSyBN1gauK2nrHna23I7pRWqpp0ORgxJ6Yjc";
 const HowToBook = () => {
   return (
     <div className="mb-10">

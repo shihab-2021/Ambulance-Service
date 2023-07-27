@@ -34,6 +34,7 @@ const Signup = ({ selectedUserType }) => {
       gender: "",
       profession: "",
       birthDate: "",
+      joinDate: new Date(),
     };
 
     createUser(email, password, userData);
