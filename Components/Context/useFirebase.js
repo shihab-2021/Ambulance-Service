@@ -72,7 +72,7 @@ const useFirebase = () => {
           icon: "success",
         });
         setIsLoading(false);
-        router.replace("/dashboard");
+        // router.replace("/dashboard");
       })
       .catch((error) => {
         setAuthError(error.message);

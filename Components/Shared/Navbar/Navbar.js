@@ -54,10 +54,10 @@ const Navbar = () => {
       </li>
       <li>
         <Link
-          href="/services"
+          href="/dashboard"
           class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-secondary"
         >
-          Services
+          Dashboard
         </Link>
       </li>
       <li>

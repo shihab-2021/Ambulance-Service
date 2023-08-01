@@ -2,6 +2,7 @@ import React from "react";
 import GiveInfoMain from "../Components/GiveInfo/GiveInfoMain";
 import Navbar from "../Components/Shared/Navbar/Navbar";
 import Footer from "../Components/Shared/Footer/Footer";
+import authCheck from "../Components/Context/authCheck";
 
 const giveInfo = () => {
   return (
@@ -13,4 +14,4 @@ const giveInfo = () => {
   );
 };
 
-export default giveInfo;
+export default authCheck(giveInfo);

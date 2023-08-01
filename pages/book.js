@@ -3,6 +3,8 @@ import React from "react";
 import Footer from "../Components/Shared/Footer/Footer";
 import Navbar from "../Components/Shared/Navbar/Navbar";
 import BookIndex from "../Components/Book/BookIndex";
+import authCheck from "../Components/Context/authCheck";
+import adminCheck from "../Components/Context/adminCheck";
 
 const book = () => {
   return (
@@ -20,4 +22,4 @@ const book = () => {
   );
 };
 
-export default book;
+export default authCheck(book);

@@ -17,7 +17,11 @@ module.exports = {
     ],
   },
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sansita: ["Sansita", "sans-serif"],
+      },
+    },
   },
   plugins: [require("daisyui")],
 };

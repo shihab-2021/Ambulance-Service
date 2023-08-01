@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Sansita:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -25,6 +27,27 @@ a {
 .leaflet-container{
   height: 500px;
   z-index: 0;
+}
+
+/* Table Style Start */
+td,
+th {
+  padding: 5px 10px;
+}
+
+th {
+  padding: 10px 10px;
+}
+
+tr {
+  margin: 5px 0;
+}
+
+/* Table Style End */
+
+.card-design {
+  background-color: #36393e52;
+  border-radius: 0.5rem;
 }
 
 /* @media (prefers-color-scheme: dark) {

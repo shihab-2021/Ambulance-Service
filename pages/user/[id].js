@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../../Components/Shared/Navbar/Navbar";
 import UserProfileMain from "../../Components/UserProfile/UserProfileMain/UserProfileMain";
 import Footer from "../../Components/Shared/Footer/Footer";
+import authCheck from "../../Components/Context/authCheck";
 
 const User = () => {
   return (
@@ -13,4 +14,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default authCheck(User);
