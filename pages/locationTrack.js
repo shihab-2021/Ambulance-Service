@@ -1,9 +1,10 @@
 import Head from "next/head";
+import React from "react";
 import Navbar from "../Components/Shared/Navbar/Navbar";
-import HomeIndex from "../Components/Home/HomeIndex";
+import LocationTrackIndex from "../Components/LocationTrack/LocationTrackIndex";
 import Footer from "../Components/Shared/Footer/Footer";
 
-export default function Home() {
+const locationTrack = () => {
   return (
     <div>
       <Head>
@@ -12,8 +13,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <HomeIndex />
+      <LocationTrackIndex />
       <Footer />
     </div>
   );
-}
+};
+
+export default locationTrack;

@@ -111,18 +111,21 @@ const Navbar = () => {
                   >
                     Patient
                   </button>
-                  <button
+                  {/* <button
                     onClick={() => handleUserTypeSelect("Administrator")}
                     className="btn-select mx-4 bg-indigo-400 text-[18px] font-[700] p-4 rounded-2xl shadow-[0px_6px_0px_0px_#CA5F98]"
                   >
                     Administrator
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </>
           ) : (
             <>
-              <Signup selectedUserType={selectedUserType} />
+              <Signup
+                setSignupOpen={setSignupOpen}
+                selectedUserType={selectedUserType}
+              />
             </>
           )}
         </div>

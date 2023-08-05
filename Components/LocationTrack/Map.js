@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Icon } from "leaflet";
-import MarkerIcon from "../../../assets/Marker.png";
+// import MarkerIcon from "../../../assets/Marker.png";
 // import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet-routing-machine";
@@ -11,8 +11,8 @@ const DirectionMap = ({ waypoints }) => {
   const map = useMap();
 
   useEffect(() => {
+    // Add the routing control to the map
     if (map !== null) {
-      // Add the routing control to the map
       L.Routing.control({
         waypoints,
         routeWhileDragging: true, // This is the line that was missing

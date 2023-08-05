@@ -4,6 +4,8 @@ import HowToBook from "./HowToBook/HowToBook";
 import io from "socket.io-client";
 import useAuth from "../Context/useAuth";
 import axios from "axios";
+import { FaAmbulance, FaMedkit, FaClock } from "react-icons/fa";
+import HowToUseSection from "./HowToUseSection";
 
 const HomeIndex = () => {
   const { user } = useAuth();
@@ -100,14 +102,14 @@ const HomeIndex = () => {
   return (
     <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl md:px-24 lg:px-8">
       <Banner />
-      <h1>{locationName}</h1>
+      {/* <h1>{locationName}</h1>
       <ul>
         {activeUsers.map((user) => (
           <li key={user._id}>
             {user.name} - Latitude: {user.latitude}, Longitude: {user.longitude}
           </li>
         ))}
-      </ul>
+      </ul> */}
       {/* {usersLocations?.map((userLocation) => (
         <div key={userLocation.id}>
           <p>User: {userLocation.name}</p>
@@ -116,6 +118,7 @@ const HomeIndex = () => {
         </div>
       ))} */}
       <HowToBook />
+      <HowToUseSection />
     </div>
   );
 };

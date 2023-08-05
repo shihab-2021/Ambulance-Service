@@ -34,7 +34,7 @@ const Login = () => {
                   E-mail
                 </label>
                 <input
-                  className="w-full px-5 py-1 text-gray-700 bg-gray-100 rounded focus:outline-none focus:bg-white"
+                  className="w-full px-5 py-1 text-gray-700 bg-gray-100 rounded focus:outline-none focus:bg-gray-200"
                   type="email"
                   id="email"
                   placeholder="E-mail"
@@ -45,7 +45,7 @@ const Login = () => {
               <div className="mt-2">
                 <label className="block  text-sm text-black">Password</label>
                 <input
-                  className="w-full px-5 py-1 text-gray-700 bg-gray-100 rounded focus:outline-none focus:bg-white"
+                  className="w-full px-5 py-1 text-gray-700 bg-gray-100 rounded focus:outline-none focus:bg-gray-200"
                   type="password"
                   id="password"
                   placeholder="Password"

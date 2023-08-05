@@ -2,17 +2,16 @@ import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Icon } from "leaflet";
-import MarkerIcon from "../../../assets/Marker.png";
-// import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet-routing-machine";
+import useAuth from "../Context/useAuth";
 
 const DirectionMap = ({ waypoints }) => {
   const map = useMap();
 
   useEffect(() => {
+    // Add the routing control to the map
     if (map !== null) {
-      // Add the routing control to the map
       L.Routing.control({
         waypoints,
         routeWhileDragging: true, // This is the line that was missing
@@ -42,59 +41,11 @@ const DirectionMap = ({ waypoints }) => {
     // }
   }, [map]);
 
-  // useEffect(() => {
-  //   if (map !== null) {
-  //     // Clear previous directions before adding new ones
-  //     map.eachLayer((layer) => {
-  //       if (layer instanceof L.Routing.Control) {
-  //         map.removeControl(layer);
-  //       }
-  //     });
-  //   }
-  // }, [map]);
-
-  // // Add the routing control with the specified waypoints
-  // L.Routing.control({
-  //   waypoints,
-  //   createMarker: () => null, // Hide markers
-  //   routeWhileDragging: true,
-  //   addWaypoints: false, // Do not allow adding new waypoints
-  //   showAlternatives: false, // Hide alternative routes
-  //   router: new L.Routing.OSRMv1({
-  //     serviceUrl: "https://router.project-osrm.org/route/v1",
-  //   }),
-  // }).addTo(map);
-
   return null;
 };
 
-const Map = () => {
-  const markers = [
-    {
-      geocode: [22.85, 91.7643693],
-      popup: "Hello, pop up 1",
-    },
-    {
-      geocode: [22.16, 91.99],
-      popup: "Hello, pop up 2",
-    },
-    {
-      geocode: [22.3599922, 91.7643693],
-      popup: "Hello, pop up 3",
-    },
-    {
-      geocode: [23.810561248496256, 90.4319548979279],
-      popup: "Evercare Hospital Dhaka",
-    },
-    {
-      geocode: [23.79567581916316, 90.40074219334419],
-      popup: "Banani",
-    },
-    {
-      geocode: [23.85140843128497, 90.37206385912916],
-      popup: "World University of Bangladesh",
-    },
-  ];
+const Map = ({ data }) => {
+  const { userInfo } = useAuth();
   const customIcon = new Icon({
     iconUrl: "https://i.ibb.co/Dw3jpcX/Marker.png",
     // iconUrl: require("../../../assets/Marker.png"),
@@ -120,11 +71,35 @@ const Map = () => {
       console.error("Geolocation is not supported by this browser.");
     }
   }, []);
-  console.log(latitude, longitude);
   const waypoints = [
-    L.latLng(23.810561248496256, 90.4319548979279), // Berlin
-    L.latLng(23.79567581916316, 90.40074219334419), // Paris
-    L.latLng(23.85140843128497, 90.37206385912916), // London
+    L.latLng(data?.pickUpGeoCode?.lat, data?.pickUpGeoCode?.lan),
+    L.latLng(data?.dropGeoCode?.lat, data?.dropGeoCode?.lan),
+  ];
+  const markers = [
+    {
+      geocode: [data?.pickUpGeoCode?.lat, data?.pickUpGeoCode?.lan],
+      popup: data?.pickUpLocation,
+    },
+    {
+      geocode: [data?.dropGeoCode?.lat, data?.dropGeoCode?.lan],
+      popup: data?.dropLocation,
+    },
+    {
+      geocode: [latitude, longitude],
+      popup: userInfo?.displayName + "(You)",
+    },
+    // {
+    //   geocode: [23.810561248496256, 90.4319548979279],
+    //   popup: "Evercare Hospital Dhaka",
+    // },
+    // {
+    //   geocode: [23.79567581916316, 90.40074219334419],
+    //   popup: "Banani",
+    // },
+    // {
+    //   geocode: [23.85140843128497, 90.37206385912916],
+    //   popup: "World University of Bangladesh",
+    // },
   ];
   return (
     <div>

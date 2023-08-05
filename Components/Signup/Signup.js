@@ -3,8 +3,9 @@ import useAuth from "../Context/useAuth";
 import logo from "../../assets/logos/navbar-logo.png";
 import Image from "next/image";
 import Loading from "../Shared/Loading/Loading";
+import swal from "sweetalert";
 
-const Signup = ({ selectedUserType }) => {
+const Signup = ({ selectedUserType, setSignupOpen }) => {
   const { user, createUser, isLoading } = useAuth();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -38,6 +39,7 @@ const Signup = ({ selectedUserType }) => {
     };
 
     createUser(email, password, userData);
+    setSignupOpen(false);
   };
   return (
     <div>

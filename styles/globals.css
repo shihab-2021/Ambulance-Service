@@ -27,6 +27,11 @@ a {
 .leaflet-container{
   height: 500px;
   z-index: 0;
+  border-radius: 10px;
+}
+
+.leaflet-right{
+  display: none;
 }
 
 /* Table Style Start */
@@ -48,6 +53,10 @@ tr {
 .card-design {
   background-color: #36393e52;
   border-radius: 0.5rem;
+}
+
+.swal-text {
+  text-align: center !important;
 }
 
 /* @media (prefers-color-scheme: dark) {
