@@ -113,28 +113,6 @@ const RideRequestDetailsMain = () => {
     });
   };
 
-  // const handleRemoveEmergency = () => {
-  //   const proceed = window.confirm(
-  //     "Are you sure, you want to delete?",
-  //     user?.email
-  //   );
-  //   if (proceed) {
-  //     setIsLoading(true);
-  //     const url = `https://rescue-reach-server.vercel.app/delete-emergency/${user?.email}`;
-  //     fetch(url, {
-  //       method: "DELETE",
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         if (data.deletedCount > 0) {
-  //           alert("Removed Successfully!");
-  //           setData(null);
-  //           setIsLoading(false);
-  //         }
-  //       });
-  //   }
-  // };
-
   return (
     <div className="container mx-auto px-4 font-sansita">
       <DialogLayout open={openSubmitDialog} setOpen={setOpenSubmitDialog}>
@@ -254,14 +232,16 @@ const RideRequestDetailsMain = () => {
                 {data?.description || "N/A"}
               </p>
               <div className="mt-6 flex justify-start">
-                <button
-                  onClick={() => {
-                    setOpenSubmitDialog(true);
-                  }}
-                  className="btn btn-primary hover:btn-ghost text-sm md:text-base lg:text-lg"
-                >
-                  Approve
-                </button>
+                {userInfo?.role === "Driver" && (
+                  <button
+                    onClick={() => {
+                      setOpenSubmitDialog(true);
+                    }}
+                    className="btn btn-primary hover:btn-ghost text-sm md:text-base lg:text-lg"
+                  >
+                    Approve
+                  </button>
+                )}
               </div>
             </div>
           </div>

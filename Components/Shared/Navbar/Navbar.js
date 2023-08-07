@@ -7,25 +7,35 @@ import DialogLayout from "../Dialog/DialogLayout";
 import Signup from "../../Signup/Signup";
 import Login from "../../Login/Login";
 import useAuth from "../../Context/useAuth";
+import Badge from "@mui/material/Badge";
+import MailIcon from "@mui/icons-material/Mail";
+import { FaAmbulance } from "react-icons/fa";
 // import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [signupOpen, setSignupOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
-  const { user, logout } = useAuth();
-  const [userInfo, setUserInfo] = useState();
+  const [bookedRides, setBookedRides] = useState();
+  const { user, logout, userInfo } = useAuth();
 
   useEffect(() => {
-    console.log(
-      `https://rescue-reach-server.vercel.app/users-data/${user?.email}`
-    );
-    fetch(`https://rescue-reach-server.vercel.app/users-data/${user?.email}`)
+    fetch("https://rescue-reach-server.vercel.app/rideBooked")
       .then((res) => res.json())
-      .then((data) => setUserInfo(data))
-      .catch((error) => {
-        console.log(error.message);
+      .then((data) => {
+        if (userInfo?.role === "Driver") {
+          const booked = data?.filter(
+            (item) => item?.driverSide?.driverInfo?.email === user?.email
+          );
+          setBookedRides(booked);
+        } else {
+          const booked = data?.filter(
+            (item) => item?.patientSide?.requester?.email === user?.email
+          );
+          setBookedRides(booked);
+        }
       });
-  }, [user, user?.email]);
+  }, [user, user?.email, userInfo]);
+  console.log(bookedRides);
   const [isSignupPopupOpen, setSignupPopupOpen] = useState(false);
   const [selectedUserType, setSelectedUserType] = useState(null);
 
@@ -142,6 +152,13 @@ const Navbar = () => {
           </Link>
           <ul class=" items-center hidden space-x-8 lg:flex">{menu}</ul>
           <ul class=" items-center hidden space-x-8 lg:flex">
+            {user?.email && (
+              <Link href="/myRides">
+                <Badge badgeContent={bookedRides?.length} color="success">
+                  <FaAmbulance className="text-[26px]" color="#CC1C1C" />
+                </Badge>
+              </Link>
+            )}
             {user?.email && (
               <div className="group relative inline-block">
                 <button className="link-item">

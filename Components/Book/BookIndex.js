@@ -183,6 +183,11 @@ const BookIndex = () => {
         icon: "error",
       });
       return;
+    } else if (userInfo?.role === "Driver") {
+      swal("Your are not Allowed!", "Currently you are in driver account.", {
+        icon: "error",
+      });
+      return;
     } else {
       const rideInfo = {
         ...info,

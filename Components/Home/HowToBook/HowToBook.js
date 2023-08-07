@@ -30,12 +30,16 @@ const HowToBook = () => {
               location track in nearest areas
             </button>
           </Link>
-          <button className="btn btn-warning hover:btn-ghost text-xl hover:text-white w-full h-20 my-4 text-black">
-            payment system
-          </button>
-          <button className="btn btn-error hover:btn-ghost text-xl hover:text-white w-full h-20 my-4 text-black">
-            our drivers
-          </button>
+          <Link href="/payment">
+            <button className="btn btn-warning hover:btn-ghost text-xl hover:text-white w-full h-20 my-4 text-black">
+              payment system
+            </button>
+          </Link>
+          <Link href="/ourDrivers">
+            <button className="btn btn-error hover:btn-ghost text-xl hover:text-white w-full h-20 my-4 text-black">
+              our drivers
+            </button>
+          </Link>
         </div>
         <div className="basis-1/2">
           {/* <div>

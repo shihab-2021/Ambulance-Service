@@ -1,6 +1,6 @@
 import React from "react";
 
-const RideRequests = ({ payments }) => {
+const RideRequests = ({ bookedRides }) => {
   return (
     <>
       <div className=" bg-[#36393e52] shadow-lg rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
@@ -40,13 +40,19 @@ const RideRequests = ({ payments }) => {
                         scope="col"
                         className="p-4 text-left text-xs font-medium text-white uppercase tracking-wider"
                       >
-                        Mail Id
+                        Ambulance No
                       </th>
                       <th
                         scope="col"
                         className="p-4 text-left text-xs font-medium text-white uppercase tracking-wider"
                       >
-                        Date & Time
+                        Date
+                      </th>
+                      <th
+                        scope="col"
+                        className="p-4 text-left text-xs font-medium text-white uppercase tracking-wider"
+                      >
+                        Time
                       </th>
                       <th
                         scope="col"
@@ -57,21 +63,26 @@ const RideRequests = ({ payments }) => {
                     </tr>
                   </thead>
                   <tbody className=" bg-[#36393e52]">
-                    {payments?.map((payment, i) => {
-                      const date = new Date(payment?.paymentHistory[0]?.date);
+                    {bookedRides?.map((bookedRide, i) => {
+                      const date = new Date(
+                        bookedRide?.patientSide?.rideDateTime
+                      );
                       return (
                         <tr
                           className={`${i % 2 && "bg-[#36393e82]"}`}
-                          key={payment._id}
+                          key={bookedRide._id}
                         >
                           <td className="p-4 whitespace-nowrap text-sm font-normal text-white">
-                            {payment?.email}
+                            {bookedRide?.driverSide?.ambulanceNumber}
                           </td>
                           <td className="p-4 whitespace-nowrap text-sm font-normal text-white">
                             {date.toDateString()}
                           </td>
+                          <td className="p-4 whitespace-nowrap text-sm font-normal text-white">
+                            {date.toLocaleTimeString()}
+                          </td>
                           <td className="p-4 whitespace-nowrap text-sm font-semibold text-white">
-                            {payment?.paymentHistory[0]?.amount}৳
+                            {bookedRide?.patientSide?.cost}৳
                           </td>
                         </tr>
                       );
