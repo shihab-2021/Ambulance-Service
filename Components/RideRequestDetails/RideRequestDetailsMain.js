@@ -181,7 +181,7 @@ const RideRequestDetailsMain = () => {
           <hr className="w-[73px] border-b-4 border-yellow-300 " />{" "}
         </h3>
         <div className=" lg:flex gap-10  justify-center">
-          <div className="basis-1/2 md:w-full">
+          <div className="basis-1/2 md:w-full mb-5">
             <div className="">
               <h2 className="text-xl lg:text-2xl mb-4 font-extrabold break-all">
                 Ride: {data?._id}

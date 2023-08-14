@@ -20,7 +20,7 @@ const MainAdminDashboardHome = () => {
       .then(() => {
         fetch("https://rescue-reach-server.vercel.app/rideRequest")
           .then((res) => res.json())
-          .then((data) => setRideRequests(data.reverse()));
+          .then((data) => setRideRequests(data));
       })
       .then(() => {
         fetch("https://rescue-reach-server.vercel.app/users")
@@ -28,9 +28,9 @@ const MainAdminDashboardHome = () => {
           .then((data) => setUsers(data.reverse()));
       })
       .then(() => {
-        // fetch("https://rescue-reach-server.vercel.app/reportedUsers")
-        //   .then((res) => res.json())
-        //   .then((data) => setReportedUsers(data.reverse()));
+        fetch("https://rescue-reach-server.vercel.app/report")
+          .then((res) => res.json())
+          .then((data) => setReportedUsers(data.reverse()));
       })
       .then(() => setIsLoading(false));
   }, []);

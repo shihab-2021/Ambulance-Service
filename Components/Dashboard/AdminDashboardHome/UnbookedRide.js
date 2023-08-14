@@ -1,22 +1,23 @@
 import React from "react";
 import Link from "next/link";
 
-const UnbookedRide = ({ rooms }) => {
+const UnbookedRide = ({ rideRequests }) => {
+  console.log(rideRequests);
   return (
     <>
       <div className=" bg-[#36393e52] shadow-lg rounded-lg p-4 sm:p-6 xl:p-8 ">
         <div className="mb-4 flex items-center justify-between">
           <div>
             <h3 className="text-xl font-bold text-white mb-2">
-              Unbooked Rooms
+              Unbooked Rides
             </h3>
             <span className="text-base font-normal text-gray-500">
-              This is a list of available room
+              This is a list of available ride
             </span>
           </div>
           <div className="flex-shrink-0">
             <Link
-              href="/rooms"
+              href="/locationTrack"
               className="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg p-2"
             >
               View all
@@ -34,41 +35,41 @@ const UnbookedRide = ({ rooms }) => {
                         scope="col"
                         className="p-4 text-left text-xs font-medium text-white uppercase tracking-wider"
                       >
-                        From
+                        Requester
                       </th>
                       <th
                         scope="col"
                         className="p-4 text-left text-xs font-medium text-white uppercase tracking-wider"
                       >
-                        To
+                        Date
                       </th>
                       <th
                         scope="col"
                         className="p-4 text-left text-xs font-medium text-white uppercase tracking-wider"
                       >
-                        Cost
+                        Time
                       </th>
                     </tr>
                   </thead>
                   <tbody className=" bg-[#36393e52]">
-                    {rooms?.map((room, i) => {
-                      if (room?.status === "Available")
-                        return (
-                          <tr
-                            className={`${i % 2 && "bg-[#36393e82]"}`}
-                            key={room?._id}
-                          >
-                            <td className="p-4 whitespace-nowrap text-sm font-normal text-white">
-                              {room?.branch}
-                            </td>
-                            <td className="p-4 whitespace-nowrap text-sm font-normal text-white">
-                              {room?.category}
-                            </td>
-                            <td className="p-4 whitespace-nowrap text-sm font-semibold text-white">
-                              {room?.cost}৳
-                            </td>
-                          </tr>
-                        );
+                    {rideRequests?.map((ride, i) => {
+                      const date = new Date(ride?.rideDateTime);
+                      return (
+                        <tr
+                          className={`${i % 2 && "bg-[#36393e82]"}`}
+                          key={ride?._id}
+                        >
+                          <td className="p-4 whitespace-nowrap text-sm font-normal text-white">
+                            {ride?.requester?.displayName}
+                          </td>
+                          <td className="p-4 whitespace-nowrap text-sm font-normal text-white">
+                            {date?.toDateString()}
+                          </td>
+                          <td className="p-4 whitespace-nowrap text-sm font-semibold text-white">
+                            {date?.toLocaleTimeString()}
+                          </td>
+                        </tr>
+                      );
                     })}
                   </tbody>
                 </table>

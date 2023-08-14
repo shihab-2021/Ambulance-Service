@@ -89,7 +89,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="shadow-lg sticky z-[1] top-0 bg-white">
+    <div className="shadow-lg sticky font-sansita z-[1] top-0 bg-white">
       <DialogLayout open={loginOpen} setOpen={setLoginOpen}>
         <div className="px-6 py-4">
           <Login />

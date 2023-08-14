@@ -108,7 +108,7 @@ const useFirebase = () => {
       .catch((error) => {
         console.log(error.message);
       });
-  }, [!userInfo, user, user?.email, auth, router]);
+  }, [user, user?.email, auth]);
 
   // For Logout
   const logout = () => {

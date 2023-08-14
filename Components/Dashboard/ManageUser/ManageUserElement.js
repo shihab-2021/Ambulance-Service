@@ -11,7 +11,7 @@ const ManageUserElement = ({ data, remainingUsers, i }) => {
     }).then((willDelete) => {
       if (willDelete) {
         remainingUsers(data._id);
-        fetch(`https://universal-hostel-api.onrender.com/users/${data._id}`, {
+        fetch(`https://rescue-reach-server.vercel.app/users/${data._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

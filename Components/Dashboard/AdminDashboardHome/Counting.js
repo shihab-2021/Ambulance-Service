@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const Counting = ({ users, meals, rooms }) => {
+const Counting = ({ users }) => {
+  const [driver, setDriver] = useState(
+    users?.filter((item) => item?.role === "Driver")
+  );
+  const [patient, setPatient] = useState(
+    users?.filter((item) => item?.role !== "Driver")
+  );
+  useEffect(() => {
+    setDriver(users?.filter((item) => item?.role === "Driver"));
+    setPatient(users?.filter((item) => item?.role !== "Driver"));
+  }, [users]);
+
   return (
     <>
       <div className=" bg-[#36393e52] shadow-lg rounded-lg p-4 sm:p-6 xl:p-8 ">
         <div className="flex items-center">
           <div className="flex-shrink-0">
             <span className="text-2xl sm:text-3xl leading-none font-bold text-white">
-              {/* {rooms?.length} */}
-              10
+              {driver?.length}
             </span>
             <h3 className="text-base font-normal text-gray-500">
               Number of driver
@@ -35,8 +45,7 @@ const Counting = ({ users, meals, rooms }) => {
         <div className="flex items-center">
           <div className="flex-shrink-0">
             <span className="text-2xl sm:text-3xl leading-none font-bold text-white">
-              {/* {meals?.length} */}
-              20
+              {patient?.length}
             </span>
             <h3 className="text-base font-normal text-gray-500">
               Number of patent
@@ -63,8 +72,7 @@ const Counting = ({ users, meals, rooms }) => {
         <div className="flex items-center">
           <div className="flex-shrink-0">
             <span className="text-2xl sm:text-3xl leading-none font-bold text-white">
-              {/* {users?.length} */}
-              32
+              {users?.length}
             </span>
             <h3 className="text-base font-normal text-gray-500">
               User signed up
