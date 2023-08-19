@@ -2,6 +2,7 @@ import React from "react";
 import RideRequestDetailsMain from "../../Components/RideRequestDetails/RideRequestDetailsMain";
 import Navbar from "../../Components/Shared/Navbar/Navbar";
 import Footer from "../../Components/Shared/Footer/Footer";
+import authCheck from "../../Components/Context/authCheck";
 
 const RideRequestDetails = () => {
   return (
@@ -13,4 +14,4 @@ const RideRequestDetails = () => {
   );
 };
 
-export default RideRequestDetails;
+export default authCheck(RideRequestDetails);

@@ -10,8 +10,9 @@ const ManageUserElement = ({ data, remainingUsers, i }) => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        remainingUsers(data._id);
-        fetch(`https://rescue-reach-server.vercel.app/users/${data._id}`, {
+        remainingUsers(data?._id);
+        const url = `https://rescue-reach-server.vercel.app/delete-user/${data?._id}`;
+        fetch(url, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -19,8 +20,7 @@ const ManageUserElement = ({ data, remainingUsers, i }) => {
             swal("User delete successful!", {
               icon: "success",
             })
-          )
-          .then((data) => console.log(data));
+          );
       }
     });
   };

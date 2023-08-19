@@ -11,7 +11,7 @@ const AddAdminMain = () => {
   const handleAdminSubmit = (e) => {
     const user = { email };
 
-    fetch("https://universal-hostel-api.onrender.com/users/admin", {
+    fetch("https://rescue-reach-server.vercel.app/users/admin", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

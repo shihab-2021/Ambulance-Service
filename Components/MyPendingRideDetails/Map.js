@@ -103,72 +103,22 @@ const Map = ({ data }) => {
   ];
   return (
     <div>
-      {latitude && longitude && (
-        <MapContainer center={[latitude, longitude]} zoom={8}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <DirectionMap waypoints={waypoints} />
-          {markers?.map((marker) => (
-            <Marker position={marker?.geocode} icon={customIcon}>
-              <Popup>{marker?.popup}</Popup>
-            </Marker>
-          ))}
-        </MapContainer>
-      )}
+      {/* {latitude && longitude && ( */}
+      <MapContainer zoom={8}>
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <DirectionMap waypoints={waypoints} />
+        {markers?.map((marker) => (
+          <Marker position={marker?.geocode} icon={customIcon}>
+            <Popup>{marker?.popup}</Popup>
+          </Marker>
+        ))}
+      </MapContainer>
+      {/* )} */}
     </div>
   );
 };
 
 export default Map;
-
-// import React from "react";
-// import { MapContainer, TileLayer, useMap } from "react-leaflet";
-// import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
-// import "leaflet-routing-machine";
-
-// const DirectionMap = ({ waypoints }) => {
-//   const map = useMap();
-
-//   // Clear previous directions before adding new ones
-//   map.eachLayer((layer) => {
-//     if (layer instanceof L.Routing.Control) {
-//       map.removeControl(layer);
-//     }
-//   });
-
-//   // Add the routing control with the specified waypoints
-//   L.Routing.control({
-//     waypoints,
-//   }).addTo(map);
-
-//   return null;
-// };
-
-// const MapWithDirections = () => {
-//   // Example waypoints (latitude and longitude)
-//   const waypoints = [
-//     L.latLng(52.52, 13.405), // Berlin
-//     L.latLng(48.8566, 2.3522), // Paris
-//     L.latLng(51.5074, -0.1278), // London
-//   ];
-
-//   return (
-//     <div>
-//       <MapContainer
-//         center={[51.505, -0.09]}
-//         zoom={6}
-//         style={{ width: "500px", height: "400px" }}
-//       >
-//         <TileLayer
-//           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-//           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-//         />
-//         <DirectionMap waypoints={waypoints} />
-//       </MapContainer>
-//     </div>
-//   );
-// };
-
-// export default MapWithDirections;

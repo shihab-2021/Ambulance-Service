@@ -339,7 +339,7 @@ const MyRidesIndex = () => {
                                 className="my-2 w-full dark:bg-Dark bg-slate-200  px-3 py-2 rounded-md flex items-center text-left font-semibold"
                                 onClick={(e) => setReportReason(e.target.value)}
                               >
-                                {key === reportReason && (
+                                {reportPatientReasons[key] === reportReason && (
                                   <span className="pr-2 text-green-600">
                                     <FaCheck />
                                   </span>

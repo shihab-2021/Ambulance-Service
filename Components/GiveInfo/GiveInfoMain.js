@@ -16,7 +16,7 @@ const GiveInfoMain = () => {
       });
   }, [data, user?.email]);
   return (
-    <div>
+    <div className="font-sansita">
       {!data && <Loading></Loading>}
       {data && (
         <div>

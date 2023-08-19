@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../Components/Shared/Navbar/Navbar";
 import MyRidesIndex from "../Components/MyRides/MyRidesIndex";
 import Footer from "../Components/Shared/Footer/Footer";
+import authCheck from "../Components/Context/authCheck";
 
 const myRides = () => {
   return (
@@ -13,4 +14,4 @@ const myRides = () => {
   );
 };
 
-export default myRides;
+export default authCheck(myRides);

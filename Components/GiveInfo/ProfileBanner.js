@@ -43,7 +43,7 @@ const ProfileBanner = (props) => {
                               </div>
                               {/* Username and title  */}
                               <div className="self-center p-2 text-center sm:text-left">
-                                <h1 className="font-serif text-3xl">
+                                <h1 className=" font-sansita text-3xl">
                                   {data?.displayName}
                                 </h1>
                                 <p className="pt-2 font-mono">{data?.role}</p>

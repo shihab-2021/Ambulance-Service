@@ -35,7 +35,6 @@ const Navbar = () => {
         }
       });
   }, [user, user?.email, userInfo]);
-  console.log(bookedRides);
   const [isSignupPopupOpen, setSignupPopupOpen] = useState(false);
   const [selectedUserType, setSelectedUserType] = useState(null);
 
@@ -62,17 +61,19 @@ const Navbar = () => {
           Home
         </Link>
       </li>
+      {userInfo && userInfo?.role === "admin" && (
+        <li>
+          <Link
+            href="/dashboard"
+            class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-secondary"
+          >
+            Dashboard
+          </Link>
+        </li>
+      )}
       <li>
         <Link
-          href="/dashboard"
-          class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-secondary"
-        >
-          Dashboard
-        </Link>
-      </li>
-      <li>
-        <Link
-          href="/about"
+          href="/aboutUs"
           class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-secondary"
         >
           About Us
@@ -80,10 +81,18 @@ const Navbar = () => {
       </li>
       <li>
         <Link
-          href="/blogs"
+          href="/payment"
           class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-secondary"
         >
-          Blogs
+          Payment
+        </Link>
+      </li>
+      <li>
+        <Link
+          href="/ourDrivers"
+          class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-secondary"
+        >
+          Our Drivers
         </Link>
       </li>
     </>
@@ -92,7 +101,7 @@ const Navbar = () => {
     <div className="shadow-lg sticky font-sansita z-[1] top-0 bg-white">
       <DialogLayout open={loginOpen} setOpen={setLoginOpen}>
         <div className="px-6 py-4">
-          <Login />
+          <Login setLoginOpen={setLoginOpen} />
         </div>
       </DialogLayout>
       <DialogLayout open={signupOpen} setOpen={setSignupOpen}>

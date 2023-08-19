@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../../Components/Shared/Navbar/Navbar";
 import Footer from "../../Components/Shared/Footer/Footer";
 import MyPendingRideDetails from "../../Components/MyPendingRideDetails/MyPendingRideDetails";
+import authCheck from "../../Components/Context/authCheck";
 
 const myPendingRideDetails = () => {
   return (
@@ -13,4 +14,4 @@ const myPendingRideDetails = () => {
   );
 };
 
-export default myPendingRideDetails;
+export default authCheck(myPendingRideDetails);

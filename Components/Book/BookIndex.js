@@ -6,6 +6,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import useAuth from "../Context/useAuth";
 import swal from "sweetalert";
+import { useRouter } from "next/router";
 
 const BookIndex = () => {
   const { userInfo } = useAuth();
@@ -17,6 +18,7 @@ const BookIndex = () => {
   } = useForm();
   const [startDate, setStartDate] = useState(new Date());
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const cost = {
     "Banani - Evercare Hospital Dhaka": 4000,
@@ -167,7 +169,6 @@ const BookIndex = () => {
 
   const findCost = () => {
     const key = `${pickUpLocation} - ${dropLocation}`;
-    console.log(key);
     return cost[key] || 0;
   };
 
@@ -214,6 +215,7 @@ const BookIndex = () => {
         });
         reset();
         setIsLoading(false);
+        router?.replace("/");
       });
     }
   };

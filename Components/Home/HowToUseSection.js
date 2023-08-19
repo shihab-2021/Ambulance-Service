@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import {
   FaUserAlt,
@@ -74,6 +75,30 @@ const HowToUseSection = () => {
           ))}
         </div>
       </div>
+      <section className="container mx-auto px-4  ">
+        <div className="bg-gradient-to-r from-purple-600 to-blue-500 py-20 mt-40 rounded-xl text-center">
+          <div className="mx-auto w-60 h-60 rounded-full bg-blue-200 flex items-center justify-center shadow-md hover:scale-105 hover:shadow-lg duration-300 ">
+            <img
+              src="https://i.ibb.co/6nhyyWN/mobile-app-coming-soon-app-is-coming-soon-stay-tuned-and-follow-for-more-mobile-application-launch-a.jpg"
+              alt="App Version Coming Soon"
+              className=" w-52 h-52 object-cover rounded-full hover:scale-105 hover:shadow-lg duration-300"
+            />
+          </div>
+          <h2 className="text-3xl mt-10 font-semibold mb-4 text-white">
+            App Version Coming Soon!
+          </h2>
+          <p className="text-gray-300 text-lg mb-6">
+            We are hard at work to bring you amazing new features and
+            improvements. Stay tuned for the upcoming app version!
+          </p>
+          <Link
+            href="/aboutUs"
+            className="bg-white text-purple-500 hover:bg-purple-500 hover:text-white py-2 px-4 rounded-full font-semibold transition duration-300"
+          >
+            Learn More
+          </Link>
+        </div>
+      </section>
     </section>
   );
 };

@@ -27,7 +27,7 @@ const LatestUsers = ({ users }) => {
                 <div className="flex items-center space-x-4">
                   <div className="flex-shrink-0">
                     <img
-                      className="h-8 w-8 rounded-full"
+                      className="h-8 w-8 rounded-full object-cover"
                       src={user?.image}
                       alt="Neil image"
                     />

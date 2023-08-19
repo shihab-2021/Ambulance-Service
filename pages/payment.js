@@ -3,6 +3,7 @@ import Navbar from "../Components/Shared/Navbar/Navbar";
 import Footer from "../Components/Shared/Footer/Footer";
 import PaymentIndex from "../Components/Payment/PaymentIndex";
 import Head from "next/head";
+import authCheck from "../Components/Context/authCheck";
 
 const payment = () => {
   return (
@@ -20,4 +21,4 @@ const payment = () => {
   );
 };
 
-export default payment;
+export default authCheck(payment);

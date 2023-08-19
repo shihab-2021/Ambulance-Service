@@ -72,7 +72,7 @@ const useFirebase = () => {
           icon: "success",
         });
         setIsLoading(false);
-        // router.replace("/dashboard");
+        router.replace("/");
       })
       .catch((error) => {
         setAuthError(error.message);
@@ -108,7 +108,53 @@ const useFirebase = () => {
       .catch((error) => {
         console.log(error.message);
       });
-  }, [user, user?.email, auth]);
+  }, [user, user?.email, auth, router]);
+
+  const [location, setLocation] = useState(null);
+
+  useEffect(() => {
+    const watchId = navigator.geolocation.watchPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        setLocation({ latitude, longitude });
+      },
+      (error) => {
+        console.error(error);
+        // setLoading(false); // Stop loading if there's an error
+      },
+      {
+        enableHighAccuracy: true,
+        maximumAge: 0,
+      }
+    );
+    return () => {
+      // Clean up the geolocation watch on component unmount
+      navigator.geolocation.clearWatch(watchId);
+    };
+  }, [user, user?.email, userInfo]);
+  useEffect(() => {
+    // Function to fetch active user data from the backend
+    const fetchActiveUsers = async () => {
+      if (location && user?.email) {
+        fetch("https://rescue-reach-server.vercel.app/activeUsers-data", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...location,
+            email: user?.email,
+          }),
+        }).then(() => console.log("send again"));
+      }
+    };
+    // Fetch active users initially
+    fetchActiveUsers();
+    // Fetch active users every 5 seconds
+    const interval = setInterval(fetchActiveUsers, 8000);
+    // Clean up the interval on component unmount
+    return () => clearInterval(interval);
+  }, [location]);
 
   // For Logout
   const logout = () => {
@@ -131,6 +177,7 @@ const useFirebase = () => {
     logout,
     token,
     createUser,
+    location,
   };
 };
 

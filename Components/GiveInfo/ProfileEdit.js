@@ -47,12 +47,8 @@ const ProfileEdit = (props) => {
     );
     // https://api.cloudinary.com/v1_1/diemjgf0n
     const file = await res.json();
-
-    const field = "thumbnail";
+    const field = e.target.name;
     const value = file.secure_url;
-    const newBlogData = { ...blogData };
-    newBlogData[field] = value;
-    setBlogData(newBlogData);
 
     setImage(file.secure_url);
     // setImage(files[0])

@@ -3,6 +3,7 @@ import React from "react";
 import Navbar from "../Components/Shared/Navbar/Navbar";
 import LocationTrackIndex from "../Components/LocationTrack/LocationTrackIndex";
 import Footer from "../Components/Shared/Footer/Footer";
+import authCheck from "../Components/Context/authCheck";
 
 const locationTrack = () => {
   return (
@@ -19,4 +20,4 @@ const locationTrack = () => {
   );
 };
 
-export default locationTrack;
+export default authCheck(locationTrack);

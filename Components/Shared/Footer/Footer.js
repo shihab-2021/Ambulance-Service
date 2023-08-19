@@ -3,7 +3,7 @@ import Link from "next/link";
 import logo from "../../../assets/logos/footer-logo.png";
 const Footer = () => {
   return (
-    <div className="bg-black">
+    <div className="bg-black font-sansita">
       <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl md:px-24 lg:px-8">
         <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2">

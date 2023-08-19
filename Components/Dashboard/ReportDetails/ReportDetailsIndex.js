@@ -20,7 +20,7 @@ const ReportDetailsIndex = () => {
               setReportedUsers(data);
               const reportFilter = data?.filter(
                 (item) =>
-                  item?._id !== reportInfo?._id ||
+                  item?._id !== reportInfo?._id &&
                   item?.reportedTo?.email === reportInfo?.reportedTo?.email
               );
               setOtherReports(reportFilter);
@@ -62,9 +62,8 @@ const ReportDetailsIndex = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        remainingUsers(data._id);
-        fetch(
-          `https://rescue-reach-server.vercel.app/users/${reportInfo?.reportedTo?._id}`,
+        const url = fetch(
+          `https://rescue-reach-server.vercel.app/delete-user/${reportInfo?.reportedTo?._id}`,
           {
             method: "DELETE",
           }
@@ -72,7 +71,7 @@ const ReportDetailsIndex = () => {
           .then((res) => res.json())
           .then(() =>
             fetch(
-              `https://rescue-reach-server.vercel.app/report/${reportInfo?._id}`,
+              `https://rescue-reach-server.vercel.app/delete-report/${reportInfo?._id}`,
               {
                 method: "DELETE",
               }
@@ -83,6 +82,7 @@ const ReportDetailsIndex = () => {
                   icon: "success",
                 })
               )
+              .then(() => router?.replace("/dashboard"))
           )
           .then((data) => console.log(data));
       }
@@ -91,7 +91,7 @@ const ReportDetailsIndex = () => {
 
   return (
     <div>
-      <div className="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
+      <div className="w-full grid grid-cols-1 xl:grid-cols-2 gap-4">
         <div className=" bg-[#36393e52] shadow-lg rounded-lg mb-4 p-4 sm:p-6 h-full">
           <h3 className="text-md md:text-lg lg:text-xl mb-7 text-white lg:text-start uppercase font-bold">
             Reported To
