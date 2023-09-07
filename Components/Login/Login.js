@@ -54,6 +54,7 @@ const Login = ({ setLoginOpen }) => {
                   required
                 />
               </div>
+              <h1 className="text-black mt-1">Forget password?</h1>
               <div className="mt-8 flex justify-center text-lg text-black">
                 <button
                   type="submit"

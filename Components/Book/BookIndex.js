@@ -1,12 +1,13 @@
-import { useState } from "react";
-import DatePicker from "react-datepicker";
-import { FaCalendarAlt } from "react-icons/fa";
+import { useEffect, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import axios from "axios";
 import { useForm } from "react-hook-form";
 import useAuth from "../Context/useAuth";
 import swal from "sweetalert";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
+const Map = dynamic(() => import("./Map"), {
+  ssr: false,
+});
 
 const BookIndex = () => {
   const { userInfo } = useAuth();
@@ -144,10 +145,33 @@ const BookIndex = () => {
       lan: 90.39364254336039,
     },
   };
+  const hospitalNames = [
+    "Apollo Hospitals Dhaka",
+    "Square Hospitals Ltd.",
+    "Ibn Sina Hospital",
+    "United Hospital Ltd.",
+    "Labaid Hospital",
+  ];
+
+  const dissesType = [
+    "Cardiology",
+    "Orthopedics",
+    "Gastroenterology",
+    "Neurology",
+    "ENT (Ear, Nose, and Throat)",
+  ];
   const [pickUpLocation, setPickUpLocation] = useState("");
   const [pickUpDropdown, setPickUpDropdown] = useState(false);
   const [dropLocation, setDropLocation] = useState("");
   const [dropDropdown, setDropDropdown] = useState(false);
+  const [hospitalName, setHospitalName] = useState("");
+  const [hospitalDropdown, setHospitalDropdown] = useState(false);
+  const [disses, setDisses] = useState("");
+  const [dissesDropdown, setDissesDropdown] = useState(false);
+  const [allDoctors, setAllDoctors] = useState([]);
+  const [doctors, setDoctors] = useState([]);
+  const [doctorName, setDoctorName] = useState("");
+  const [doctorDropdown, setDoctorDropdown] = useState(false);
 
   const handlePickUpInputChange = (event) => {
     setPickUpLocation(event.target.value);
@@ -198,6 +222,9 @@ const BookIndex = () => {
         dropLocation: dropLocation,
         pickUpGeoCode: locations[pickUpLocation],
         dropGeoCode: locations[dropLocation],
+        hospitalName: hospitalName,
+        disses: disses,
+        doctorName: doctorName,
       };
       console.log(rideInfo);
       setIsLoading(true);
@@ -219,10 +246,28 @@ const BookIndex = () => {
       });
     }
   };
+
+  useEffect(() => {
+    fetch("https://rescue-reach-server.vercel.app/doctor")
+      .then((res) => res.json())
+      .then((data) => {
+        setAllDoctors(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    const filterDoctor = allDoctors?.filter(
+      (item) => item?.hospital === hospitalName && item?.expertiseIn === disses
+    );
+    setDoctors(filterDoctor);
+  }, [hospitalName, disses]);
+
+  console.log(locations[pickUpLocation], locations[dropLocation]);
+
   return (
     <div className="my-14 mx-4 font-sansita">
       <div>
-        <section className="max-w-4xl p-6 mx-auto rounded-md shadow-lg bg-gradient-to-br from-indigo-500 to-purple-600 mt-5">
+        {/* <section className="max-w-4xl p-6 mx-auto rounded-md shadow-lg bg-gradient-to-br from-indigo-500 to-purple-600 mt-5">
           <h1 className="text-2xl font-bold text-center capitalize text-white">
             Give Booking Details
           </h1>
@@ -376,6 +421,314 @@ const BookIndex = () => {
                 type="submit"
                 value="Submit Document"
                 className="btn dropShadow btn-outline outline-green-300  hover:btn-ghost text-white hover:text-green-400 "
+              />
+            </div>
+          </form>
+        </section> */}
+        <section className="max-w-4xl p-6 mx-auto border rounded-md shadow-lg bg-white mt-5">
+          <h1 className="text-2xl font-bold text-center capitalize text-black">
+            Give Booking Details
+          </h1>
+          <hr className="w-20 mx-auto mt-1 mb-10 border-t-2 border-yellow-300" />
+          <form onSubmit={handleSubmit(submitHandler)}>
+            <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+              <div>
+                <label className="text-black" htmlFor="case">
+                  Select Case
+                </label>
+                <select
+                  name="case"
+                  {...register("case")}
+                  className="block w-full px-4 py-2 mt-2 rounded-md bg-white border border-black focus:border-red-500 focus:outline-none focus:ring"
+                >
+                  <option value="Emergency">Emergency</option>
+                  <option value="Medium Condition">Medium Condition</option>
+                  <option value="Normal Condition">Normal Condition</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div>
+                <label className="text-black" htmlFor="system">
+                  System
+                </label>
+                <select
+                  name="system"
+                  {...register("system")}
+                  className="block w-full px-4 py-2 mt-2 rounded-md bg-white border border-black focus:border-red-500 focus:outline-none focus:ring"
+                >
+                  <option value="Advance">Advance</option>
+                  <option value="At Present">At Present</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div className="relative">
+                <label className="text-black" htmlFor="pickupLocation">
+                  Pick Up Location
+                </label>
+                <input
+                  className="block w-full px-4 py-2 mt-2 rounded-md bg-white border border-black focus:border-red-500 focus:outline-none focus:ring"
+                  type="text"
+                  value={pickUpLocation}
+                  onChange={handlePickUpInputChange}
+                  onFocus={() => setPickUpDropdown(true)}
+                  onBlur={() => handlePickUpSelectPlace(pickUpLocation)}
+                  placeholder="Type a place..."
+                />
+                {pickUpDropdown && (
+                  <div className="absolute z-10 bg-white border border-black mt-1 w-full rounded-md shadow-lg max-h-[250px] overflow-y-auto">
+                    {places
+                      ?.filter((place) =>
+                        place
+                          ?.toLowerCase()
+                          ?.includes(pickUpLocation?.toLowerCase())
+                      )
+                      .map((place, index) => (
+                        <div
+                          key={index}
+                          className={`${
+                            place !== dropLocation ? "block" : "hidden"
+                          } px-4 py-2 cursor-pointer hover:bg-gray-100`}
+                          onMouseDown={() => handlePickUpSelectPlace(place)}
+                        >
+                          {place}
+                        </div>
+                      ))}
+                  </div>
+                )}
+              </div>
+              <div className="relative">
+                <label className="text-black" htmlFor="dropLocation">
+                  Drop Location
+                </label>
+                <input
+                  className="block w-full px-4 py-2 mt-2 rounded-md bg-white border border-black focus:border-red-500 focus:outline-none focus:ring"
+                  type="text"
+                  value={dropLocation}
+                  onChange={handleDropInputChange}
+                  onFocus={() => setDropDropdown(true)}
+                  onBlur={() => handleDropSelectPlace(dropLocation)}
+                  placeholder="Type a place..."
+                />
+                {dropDropdown && (
+                  <div className="absolute z-10 bg-white border border-black mt-1 w-full rounded-md shadow-lg max-h-[250px] overflow-y-auto">
+                    {places
+                      ?.filter((place) =>
+                        place
+                          ?.toLowerCase()
+                          ?.includes(dropLocation?.toLowerCase())
+                      )
+                      .map((place, index) => (
+                        <div
+                          key={index}
+                          className={`${
+                            place !== pickUpLocation ? "block" : "hidden"
+                          } px-4 py-2 cursor-pointer hover:bg-gray-100`}
+                          onMouseDown={() => handleDropSelectPlace(place)}
+                        >
+                          {place}
+                        </div>
+                      ))}
+                  </div>
+                )}
+              </div>
+              <div>
+                <label className="text-black" htmlFor="cost">
+                  Cost
+                </label>
+                <input
+                  name="cost"
+                  value={pickUpLocation && dropLocation && findCost()}
+                  className="block w-full px-4 py-2 mt-2 rounded-md bg-white border border-black focus:border-red-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                  readOnly
+                />
+              </div>
+              <div>
+                <label className="text-black" htmlFor="rideDateTime">
+                  Date & Time
+                </label>
+                <div className="relative">
+                  <input
+                    required
+                    {...register("rideDateTime")}
+                    className="block w-full px-4 py-2 mt-2 rounded-md bg-white border border-black focus:border-red-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                    name="rideDateTime"
+                    type="datetime-local"
+                    placeholder="Select a date and time..."
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="basis-1/2 mt-4 ">
+              {locations[pickUpLocation] &&
+                locations[dropLocation] &&
+                !pickUpDropdown &&
+                !dropDropdown && (
+                  <Map
+                    data={{
+                      pickUpLocation: pickUpLocation,
+                      dropLocation: dropLocation,
+                      pickUpGeoCode: locations[pickUpLocation],
+                      dropGeoCode: locations[dropLocation],
+                    }}
+                  />
+                )}
+            </div>
+            <div
+              className={`grid grid-cols-1 mt-4 ${
+                hospitalName && !disses && "lg:grid-cols-2 gap-6"
+              } ${hospitalName && disses && "lg:grid-cols-3 gap-4"} `}
+            >
+              <div className="relative">
+                <label className="text-black" htmlFor="dropLocation">
+                  Select Hospital
+                </label>
+                <input
+                  className="block w-full px-4 py-2 mt-2 rounded-md bg-white border border-black focus:border-red-500 focus:outline-none focus:ring"
+                  type="text"
+                  value={hospitalName}
+                  onChange={(e) => setHospitalName(e.target.value)}
+                  onFocus={() => setHospitalDropdown(true)}
+                  onBlur={() => {
+                    setHospitalName(hospitalName);
+                    setHospitalDropdown(false);
+                  }}
+                  placeholder="Type a hospital..."
+                />
+                {hospitalDropdown && (
+                  <div className="absolute z-10 bg-white border border-black mt-1 w-full rounded-md shadow-lg max-h-[250px] overflow-y-auto">
+                    {hospitalNames
+                      ?.filter((hospital) =>
+                        hospital
+                          ?.toLowerCase()
+                          ?.includes(hospitalName?.toLowerCase())
+                      )
+                      .map((hospital, index) => (
+                        <div
+                          key={index}
+                          className={`${
+                            hospital !== hospitalName ? "block" : "hidden"
+                          } px-4 py-2 cursor-pointer hover:bg-gray-100`}
+                          onMouseDown={() => {
+                            setHospitalName(hospital);
+                            setHospitalDropdown(false);
+                          }}
+                        >
+                          {hospital}
+                        </div>
+                      ))}
+                  </div>
+                )}
+              </div>
+              {hospitalName && (
+                <div className="relative">
+                  <label className="text-black" htmlFor="dropLocation">
+                    Select Disses
+                  </label>
+                  <input
+                    className="block w-full px-4 py-2 mt-2 rounded-md bg-white border border-black focus:border-red-500 focus:outline-none focus:ring"
+                    type="text"
+                    value={disses}
+                    onChange={(e) => setDisses(e.target.value)}
+                    onFocus={() => setDissesDropdown(true)}
+                    onBlur={() => {
+                      setDisses(disses);
+                      setDissesDropdown(false);
+                    }}
+                    placeholder="Type a disses..."
+                  />
+                  {dissesDropdown && (
+                    <div className="absolute z-10 bg-white border border-black mt-1 w-full rounded-md shadow-lg max-h-[250px] overflow-y-auto">
+                      {dissesType
+                        ?.filter((singleDisses) =>
+                          singleDisses
+                            ?.toLowerCase()
+                            ?.includes(disses?.toLowerCase())
+                        )
+                        .map((singleDisses, index) => (
+                          <div
+                            key={index}
+                            className={`${
+                              singleDisses !== disses ? "block" : "hidden"
+                            } px-4 py-2 cursor-pointer hover:bg-gray-100`}
+                            onMouseDown={() => {
+                              setDisses(singleDisses);
+                              setDissesDropdown(false);
+                            }}
+                          >
+                            {singleDisses}
+                          </div>
+                        ))}
+                    </div>
+                  )}
+                </div>
+              )}
+              {hospitalName && disses && (
+                <div className="relative">
+                  <label className="text-black" htmlFor="dropLocation">
+                    Select Doctor
+                  </label>
+                  <input
+                    className="block w-full px-4 py-2 mt-2 rounded-md bg-white border border-black focus:border-red-500 focus:outline-none focus:ring"
+                    type="text"
+                    value={doctorName}
+                    onChange={(e) => setDoctorName(e.target.value)}
+                    onFocus={() => setDoctorDropdown(true)}
+                    onBlur={() => {
+                      setDoctorName(doctorName);
+                      setDoctorDropdown(false);
+                    }}
+                    placeholder="Type a doctor name..."
+                  />
+                  {doctorDropdown && (
+                    <div className="absolute z-10 bg-white border border-black mt-1 w-full rounded-md shadow-lg max-h-[250px] overflow-y-auto">
+                      {doctors
+                        ?.filter((doctor) =>
+                          doctor?.doctorName
+                            ?.toLowerCase()
+                            ?.includes(doctorName?.toLowerCase())
+                        )
+                        .map((doctor, index) => (
+                          <div
+                            key={index}
+                            className={`${
+                              doctor?.doctorName !== doctorName
+                                ? "block"
+                                : "hidden"
+                            } px-4 py-2 cursor-pointer hover:bg-gray-100`}
+                            onMouseDown={() => {
+                              setDoctorName(doctor?.doctorName);
+                              setDoctorDropdown(false);
+                            }}
+                          >
+                            {doctor?.doctorName}
+                          </div>
+                        ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            <div className="my-4">
+              <label className="text-black" htmlFor="description">
+                Patient Description (Optional)
+              </label>
+              <textarea
+                name="description"
+                {...register("description")}
+                id="description"
+                type="textarea"
+                className="block h-36 w-full px-4 py-2 mt-2 rounded-md bg-white border border-black focus:border-red-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+              ></textarea>
+            </div>
+            <p className="text-center mt-2 text-red-500 font-semibold">
+              Note: Make Sure You Fill-Up Every Field!
+            </p>
+            <div className="flex justify-center mt-6">
+              <input
+                type="submit"
+                value="Submit"
+                className="btn dropShadow btn-neutral outline-red-500 hover:btn-ghost text-white hover:text-red-500 "
               />
             </div>
           </form>
