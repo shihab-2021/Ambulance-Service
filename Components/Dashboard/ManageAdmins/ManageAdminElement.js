@@ -35,7 +35,7 @@ const ManageAdminElement = ({ data, remainingUsers, i }) => {
       <td>{data.phone}</td>
       <td className="float-right">
         <Link href={`/dashboard/manage-user/${data._id}`}>
-          <button className="mx-2 bg-green-400 py-1 px-3 text-gray-800 font-bold rounded hover:bg-green-600">
+          <button className="mx-2 bg-slate-400 py-1 px-3 text-gray-800 font-bold rounded hover:bg-slate-500">
             View
           </button>
         </Link>

@@ -260,7 +260,7 @@ const AddDoctorIndex = () => {
         <h1 className="text-2xl font-bold text-center capitalize text-white">
           Give Doctor Information
         </h1>
-        <hr className="w-20 mx-auto mt-1 mb-10 border-t-2 border-yellow-300" />
+        <hr className="w-20 mx-auto mt-1 mb-10 border-t-2 border-red-300" />
         <form onSubmit={handleSubmit(submitHandler)}>
           <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>

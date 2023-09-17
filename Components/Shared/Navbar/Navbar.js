@@ -208,9 +208,17 @@ const Navbar = () => {
             )}
             {!user?.email && (
               <li>
-                <button
+                {/* <button
                   onClick={() => setLoginOpen(true)}
                   class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-primary hover:bg-secondary focus:shadow-outline focus:outline-none mr-4"
+                  aria-label="Login"
+                  title="Login"
+                >
+                  Log In
+                </button> */}
+                <button
+                  onClick={() => setLoginOpen(true)}
+                  class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none mr-4 btn bg-slate-600 text-white hover:text-black hover:bg-red-300"
                   aria-label="Login"
                   title="Login"
                 >
@@ -218,9 +226,9 @@ const Navbar = () => {
                 </button>
                 <button
                   onClick={() => setSignupOpen(true)}
-                  class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-primary hover:bg-secondary focus:shadow-outline focus:outline-none"
+                  class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-primary hover:bg-gray-400 focus:shadow-outline focus:outline-none"
                   aria-label="Login"
-                  title="Login"
+                  title="Signup"
                 >
                   Signup
                 </button>

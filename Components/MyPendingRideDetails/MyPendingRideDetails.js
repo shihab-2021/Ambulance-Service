@@ -109,10 +109,10 @@ const MyPendingRideDetails = () => {
   };
   return (
     <div className="container mx-auto px-4 font-sansita">
-      <div className="p-6 rounded-lg shadow-lg bg-gradient-to-r from-teal-400 to-blue-500 text-white my-20">
+      <div className="p-6 rounded-lg shadow-lg bg-gradient-to-r from-gray-500 to-gray-400 text-white my-20">
         <h3 className="text-xl md:text-2xl lg:text-4xl mb-7  text-white lg:text-start uppercase font-extrabold">
           Pending Ride Details
-          <hr className="w-[73px] border-b-4 border-yellow-300 " />{" "}
+          <hr className="w-[73px] border-b-4 border-red-400 " />{" "}
         </h3>
         <div className=" lg:flex gap-10  justify-center">
           <div className="basis-1/2 md:w-full mb-5">
@@ -174,7 +174,7 @@ const MyPendingRideDetails = () => {
                   </p>
                 </div>
               </div>
-              <p className=" text-[#FFD700] font-extrabold mt-4 text-base md:text-lg lg:text-xl">
+              <p className=" text-red-400 font-extrabold mt-4 text-base md:text-lg lg:text-xl">
                 <span className="font-extrabold text-white">Cost:</span>{" "}
                 {data?.patientSide?.cost}tk
               </p>

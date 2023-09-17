@@ -7,7 +7,7 @@ const aboutUs = () => {
     <div>
       <Navbar />
       <div className="bg-gray-100 font-sansita">
-        <section className="bg-gradient-to-r from-blue-400 to-purple-600 text-white py-20">
+        <section className="bg-gradient-to-r from-gray-400 to-red-400 text-white py-20">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-5xl font-bold mb-6">
               Explore Our Visionary Ride-Sharing Journey
@@ -16,7 +16,7 @@ const aboutUs = () => {
               Elevating your travel experience with innovation, trust, and
               community-driven ride-sharing solutions.
             </p>
-            <button className="bg-white text-purple-500 hover:bg-purple-500 hover:text-white py-3 px-8 rounded-full transition duration-300 ease-in-out focus:outline-none">
+            <button className="bg-white text-red-500 hover:bg-red-500 hover:text-white py-3 px-8 rounded-full transition duration-300 ease-in-out focus:outline-none">
               Discover More
             </button>
           </div>
@@ -26,7 +26,7 @@ const aboutUs = () => {
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-4xl font-bold mb-10">
               Our Mission and Values
-              <hr className="w-[100px] mx-auto mt-2 border-b-4 rounded-full border-green-300 " />
+              <hr className="w-[100px] mx-auto mt-2 border-b-4 rounded-full border-red-300 " />
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               <div className="p-8 border rounded-lg shadow-lg bg-white hover:shadow-xl transition duration-300 transform hover:scale-105">

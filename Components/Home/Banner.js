@@ -1,13 +1,17 @@
 import Image from "next/image";
 import banner from "../../assets/banner.jpg";
+import BannerBD from "../../assets/bannerBD.jpg";
+import Ambulance1 from "../../assets/ambulance1.png";
+import Ambulance2 from "../../assets/ambulance2.jpg";
+import Ambulance3 from "../../assets/ambulance3.jpg";
 
 const Banner = () => {
   return (
     <div>
       <div className="mt-3">
         <Image
-          src={banner}
-          className="w-full h-[40vh] lg:h-full rounded-2xl shadow-md shadow-primary-focus"
+          src={BannerBD}
+          className="w-full h-[40vh] lg:h-full rounded-2xl shadow-md shadow-red-400"
         />
       </div>
       <div className="my-5 lg:my-10 text-center font-sansita">

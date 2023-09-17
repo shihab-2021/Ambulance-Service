@@ -37,8 +37,8 @@ const OurDriversIndex = ({ driver }) => {
       )}
       <div className="px-4 min-h-[50vh] font-sansita my-10 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl md:px-24 lg:px-8">
         <h3 className="text-xl md:text-2xl lg:text-4xl mb-7 text-black lg:text-start uppercase font-bold">
-          Our<span className="text-green-300"> Drivers</span>
-          <hr className="w-[73px] border-b-4 border-green-300 " />{" "}
+          Our<span className="text-red-400"> Drivers</span>
+          <hr className="w-[73px] border-b-4 border-red-400 " />{" "}
         </h3>
         <div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 my-8">
@@ -64,7 +64,7 @@ const OurDriversIndex = ({ driver }) => {
                 <p className="text-gray-600">Address: {driver?.address}</p>
                 <p className="text-gray-600">{driver?.biography}</p>
                 <div className="mt-4 flex sm:items-center flex-col sm:flex-row sm:space-x-2">
-                  <p className="text-yellow-500 font-semibold text-lg">
+                  <p className="text-red-500 font-semibold text-lg">
                     Driving since: {formatDate(driver?.joinDate)}
                   </p>
                   {calculateDateDifference(driver?.joinDate) > 60 && (

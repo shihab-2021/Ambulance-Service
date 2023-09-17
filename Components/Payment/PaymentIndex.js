@@ -42,8 +42,8 @@ const PaymentIndex = () => {
       ) : (
         <div className="px-4 font-sansita my-10 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl md:px-24 lg:px-8">
           <h3 className="text-xl md:text-2xl lg:text-4xl mb-7 text-black lg:text-start uppercase font-bold">
-            <span className="text-green-300">Payment </span>System
-            <hr className="w-[73px] border-b-4 border-green-300 " />{" "}
+            <span className="text-red-400">Payment </span>System
+            <hr className="w-[73px] border-b-4 border-red-400 " />{" "}
           </h3>
           {userInfo?.role === "Driver" ? (
             <div className=" min-h-[35.3vh] ">
@@ -63,7 +63,7 @@ const PaymentIndex = () => {
                       <h1 className="text-2xl">
                         Currently you have no pending ride!
                       </h1>
-                      <hr className="w-[100px] mt-2 rounded-full animate-ping border-b-4 border-green-300" />
+                      <hr className="w-[100px] mt-2 rounded-full animate-ping border-b-4 border-red-400" />
                     </div>
                   ) : (
                     <>

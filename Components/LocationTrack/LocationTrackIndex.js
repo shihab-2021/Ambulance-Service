@@ -51,8 +51,8 @@ const LocationTrackIndex = () => {
   return (
     <div className="px-4 font-sansita my-10 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl md:px-24 lg:px-8">
       <h3 className="text-xl md:text-2xl lg:text-4xl mb-7 text-black lg:text-start uppercase font-bold">
-        location track in <span className="text-green-300">nearest </span> areas
-        <hr className="w-[73px] border-b-4 border-green-300 " />{" "}
+        location track in <span className="text-red-400">nearest </span> areas
+        <hr className="w-[73px] border-b-4 border-red-400 " />{" "}
       </h3>
       <div className="lg:flex gap-10 justify-center">
         <div className="basis-1/2 ">
@@ -91,7 +91,7 @@ const LocationTrackIndex = () => {
           </small>
           <div className="mt-[20px]">
             {filteredRideRequests?.map((request) => (
-              <div className="p-6 mt-[20px] rounded-lg shadow-xl bg-gradient-to-r from-[#2dd4bf69] to-[#3b82f647]    border border-gray-200 hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+              <div className="p-6 mt-[20px] rounded-lg shadow-xl bg-gradient-to-r from-gray-100 to-gray-200    border border-gray-200 hover:shadow-2xl transition-shadow duration-300 ease-in-out">
                 <div className="flex items-center justify-between mb-4">
                   <h2 className=" text-lg lg:text-2xl break-all font-bold">
                     Ride: {request?._id}
@@ -127,7 +127,7 @@ const LocationTrackIndex = () => {
                 </div>
                 <div className="flex justify-center sm:justify-end space-x-4">
                   <Link href={`/rideRequest/${request?._id}`}>
-                    <button className="btn btn-success hover:btn-ghost text-xl hover:text-white">
+                    <button className="btn bg-red-400 hover:btn-ghost text-xl hover:text-white">
                       View Details
                     </button>
                   </Link>

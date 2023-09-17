@@ -190,7 +190,7 @@ const UserInfo = (props) => {
               {/* <!-- Left Side Start --> */}
               <div className="col-span-12 w-full lg:col-span-4">
                 {/* <!-- Profile Card --> */}
-                <div className="border-t-4 border-green-400 rounded-lg bg-white p-3 ">
+                <div className="border-t-4 border-red-400 rounded-lg bg-white p-3 ">
                   <div
                     style={{ maxWidth: "250px", maxHeight: "250px" }}
                     className="image mx-auto overflow-hidden rounded-lg border-2"
@@ -209,7 +209,7 @@ const UserInfo = (props) => {
                   {props?.data?.email === data?.email && (
                     <div className="w-100 flex justify-center">
                       <Link href="/giveInfo">
-                        <p className="border border-teal-400 p-2 my-5 rounded">
+                        <p className="border border-red-400 p-2 my-5 rounded">
                           Update Profile
                         </p>
                       </Link>
@@ -231,7 +231,7 @@ const UserInfo = (props) => {
                 {/* <!-- About Section --> */}
                 <div className="rounded-sm bg-white p-3 shadow-sm ">
                   <div className="flex items-center space-x-2 font-semibold leading-8 text-gray-900">
-                    <span className="text-green-500">
+                    <span className="text-red-500">
                       <svg
                         className="h-5"
                         xmlns="http://www.w3.org/2000/svg"
@@ -298,7 +298,7 @@ const UserInfo = (props) => {
                 <div className=" my-16 ">
                   <h4 className="text-lg w-fit uppercase md:text-xl lg:text-2xl">
                     Ride History
-                    <hr className="w-[73px] mx-auto rounded-full animate-ping border-b-4 border-green-300 " />
+                    <hr className="w-[73px] mx-auto rounded-full animate-ping border-b-4 border-red-300 " />
                   </h4>
                   {!isLoading && !completedRides[0] && (
                     <div>
@@ -309,7 +309,7 @@ const UserInfo = (props) => {
                   )}
                   <div className="grid grid-cols-1 gap-4 my-5">
                     {completedRides?.map((ride) => (
-                      <div className="bg-gradient-to-r from-teal-400 to-blue-400 rounded-lg shadow-xl p-6 hover:shadow-2xl transition duration-300">
+                      <div className="bg-gradient-to-r from-gray-500 to-gray-400 rounded-lg shadow-xl p-6 hover:shadow-2xl transition duration-300">
                         <h2 className="text-2xl font-semibold text-white mb-2">
                           {ride?.patientSide?.pickUpLocation} to{" "}
                           {ride?.patientSide?.dropLocation}
@@ -331,7 +331,7 @@ const UserInfo = (props) => {
                                 {ride?.driverSide?.driverInfo?.displayName}
                               </p>
                             )}
-                            <p className="text-[#FFD700] font-extrabold mt-2 text-xl">
+                            <p className="text-red-500 font-extrabold mt-2 text-xl">
                               <span className="font-bold">Cost:</span>{" "}
                               {ride?.patientSide?.cost}tk
                             </p>

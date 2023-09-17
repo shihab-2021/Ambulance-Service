@@ -155,8 +155,8 @@ const MyRidesIndex = () => {
       )}
       <div className="px-4 min-h-[50vh] font-sansita my-10 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl xl:max-w-screen-xl 2xl:max-w-screen-2xl md:px-24 lg:px-8">
         <h3 className="text-xl md:text-2xl lg:text-4xl mb-7 text-black lg:text-start uppercase font-bold">
-          <span className="text-green-300">My </span>Rides
-          <hr className="w-[73px] border-b-4 border-green-300 " />{" "}
+          <span className="text-red-400">My </span>Rides
+          <hr className="w-[73px] border-b-4 border-red-400 " />{" "}
         </h3>
         <div>
           <h4 className="text-lg md:text-xl uppercase w-fit lg:text-2xl">
@@ -172,17 +172,17 @@ const MyRidesIndex = () => {
           )}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 my-5">
             {bookedRides?.map((ride) => (
-              <div className="bg-gradient-to-r from-purple-400 to-blue-400 rounded-lg shadow-xl p-6 hover:shadow-2xl transition duration-300">
-                <h2 className="text-2xl font-semibold text-white mb-2">
+              <div className="bg-gradient-to-r from-gray-200 to-gray-100 rounded-lg shadow-xl p-6 hover:shadow-2xl transition duration-300">
+                <h2 className="text-2xl font-semibold text-black mb-2">
                   {ride?.patientSide?.pickUpLocation} to{" "}
                   {ride?.patientSide?.dropLocation}
                 </h2>
-                <p className="text-gray-200 mb-4">
+                <p className="text-gray-700 mb-4">
                   {formatDate(ride?.patientSide?.rideDateTime)} -{" "}
                   {formatTime(ride?.patientSide?.rideDateTime)}
                 </p>
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between border-t border-gray-300 pt-4">
-                  <div className="text-white">
+                  <div className="text-black">
                     {userInfo?.role === "Driver" ? (
                       <p className="text-xl font-bold">
                         Patient: {ride?.patientSide?.requester?.displayName}
@@ -192,12 +192,12 @@ const MyRidesIndex = () => {
                         Driver: {ride?.driverSide?.driverInfo?.displayName}
                       </p>
                     )}
-                    <p className="text-[#FFD700] font-extrabold mt-2 text-xl">
+                    <p className="text-red-400 font-extrabold mt-2 text-xl">
                       <span className="font-bold">Cost:</span>{" "}
                       {ride?.patientSide?.cost}tk
                     </p>
                   </div>
-                  <div className="text-white space-y-2">
+                  <div className="text-black space-y-2">
                     <p className="text-xl font-bold">
                       Ambulance Number:{"  "}
                       <span className=" font-semibold">
@@ -214,7 +214,7 @@ const MyRidesIndex = () => {
                   </div>
                 </div>
                 <Link href={`/myPendingRideDetails/${ride?._id}`}>
-                  <button className="mt-6 bg-yellow-500 text-white py-2 px-6 rounded-full hover:btn-ghost btn focus:outline-none transform transition ">
+                  <button className="mt-6 bg-red-400 text-black py-2 px-6 rounded-full hover:btn-ghost btn focus:outline-none transform transition ">
                     View Details
                   </button>
                 </Link>
@@ -236,17 +236,17 @@ const MyRidesIndex = () => {
           )}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 my-5">
             {completedRides?.map((ride) => (
-              <div className="bg-gradient-to-r from-teal-400 to-blue-400 rounded-lg shadow-xl p-6 hover:shadow-2xl transition duration-300">
-                <h2 className="text-2xl font-semibold text-white mb-2">
+              <div className="bg-gradient-to-r from-gray-100 to-gray-200 rounded-lg shadow-xl p-6 hover:shadow-2xl transition duration-300">
+                <h2 className="text-2xl font-semibold text-gray-700 mb-2">
                   {ride?.patientSide?.pickUpLocation} to{" "}
                   {ride?.patientSide?.dropLocation}
                 </h2>
-                <p className="text-gray-200 mb-4">
+                <p className="text-gray-700 mb-4">
                   {formatDate(ride?.patientSide?.rideDateTime)} -{" "}
                   {formatTime(ride?.patientSide?.rideDateTime)}
                 </p>
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between border-t border-gray-300 pt-4">
-                  <div className="text-white">
+                  <div className="text-black">
                     {userInfo?.role === "Driver" ? (
                       <p className="text-xl font-bold">
                         Patient: {ride?.patientSide?.requester?.displayName}
@@ -256,12 +256,12 @@ const MyRidesIndex = () => {
                         Driver: {ride?.driverSide?.driverInfo?.displayName}
                       </p>
                     )}
-                    <p className="text-[#FFD700] font-extrabold mt-2 text-xl">
+                    <p className="text-red-400 font-extrabold mt-2 text-xl">
                       <span className="font-bold">Cost:</span>{" "}
                       {ride?.patientSide?.cost}tk
                     </p>
                   </div>
-                  <div className="text-white space-y-2">
+                  <div className="text-black space-y-2">
                     <p className="text-xl font-bold">
                       Ambulance Number:{"  "}
                       <span className=" font-semibold">
@@ -282,7 +282,7 @@ const MyRidesIndex = () => {
                     setOpenReport(true);
                     setSelectedRide(ride);
                   }}
-                  className="mt-6 bg-rose-500 text-white py-2 px-6 rounded-full hover:btn-ghost btn focus:outline-none transform transition "
+                  className="mt-6 bg-rose-500 text-black py-2 px-6 rounded-full hover:btn-ghost btn focus:outline-none transform transition "
                 >
                   Report Ride
                 </button>
