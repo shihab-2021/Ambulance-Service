@@ -4,6 +4,9 @@ import useAuth from "../Context/useAuth";
 import { FaCheck } from "react-icons/fa";
 import swal from "sweetalert";
 import Link from "next/link";
+import DialogLayout from "../Shared/Dialog/DialogLayout";
+import { Rating } from "@mui/material";
+import StarIcon from "@mui/icons-material/Star";
 
 const MyRidesIndex = () => {
   const [bookedRides, setBookedRides] = useState([]);
@@ -13,6 +16,8 @@ const MyRidesIndex = () => {
   const [selectedRide, setSelectedRide] = useState({});
   const { user, userInfo } = useAuth();
   const [reportReason, setReportReason] = useState("");
+  const [openReview, setOpenReview] = useState(false);
+  const [value, setValue] = useState(0);
 
   // report  handler here
   const handleReport = () => {
@@ -146,6 +151,8 @@ const MyRidesIndex = () => {
       });
   }, [user, user?.email, userInfo, userInfo?.email]);
 
+  console.log(completedRides);
+
   return (
     <div>
       {isLoading && (
@@ -235,6 +242,22 @@ const MyRidesIndex = () => {
             </div>
           )}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 my-5">
+            <DialogLayout open={openReview} setOpen={setOpenReview}>
+              <div className="px-6 py-4">
+                <Rating
+                  name="rating"
+                  value={value}
+                  precision={0.5}
+                  onChange={(event, newValue) => {
+                    setValue(newValue);
+                  }}
+                  style={{ color: "red" }}
+                  emptyIcon={
+                    <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+                  }
+                />
+              </div>
+            </DialogLayout>
             {completedRides?.map((ride) => (
               <div className="bg-gradient-to-r from-gray-100 to-gray-200 rounded-lg shadow-xl p-6 hover:shadow-2xl transition duration-300">
                 <h2 className="text-2xl font-semibold text-gray-700 mb-2">
@@ -277,15 +300,23 @@ const MyRidesIndex = () => {
                     </p>
                   </div>
                 </div>
-                <button
-                  onClick={() => {
-                    setOpenReport(true);
-                    setSelectedRide(ride);
-                  }}
-                  className="mt-6 bg-rose-500 text-black py-2 px-6 rounded-full hover:btn-ghost btn focus:outline-none transform transition "
-                >
-                  Report Ride
-                </button>
+                <div className="flex justify-between">
+                  <button
+                    onClick={() => {
+                      setOpenReport(true);
+                      setSelectedRide(ride);
+                    }}
+                    className="mt-6 bg-rose-500 text-black py-2 px-6 rounded-full hover:btn-ghost btn focus:outline-none transform transition "
+                  >
+                    Report Ride
+                  </button>
+                  <Link
+                    href={`/rating/${ride?.driverSide?.driverInfo?._id}`}
+                    className="mt-6 bg-rose-500 text-black py-2 px-6 rounded-full hover:btn-ghost btn focus:outline-none transform transition "
+                  >
+                    Rate Driver
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
