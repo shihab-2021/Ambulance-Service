@@ -81,7 +81,6 @@ const ProfileEdit = (props) => {
       email: data?.email,
       joinDate: data?.joinDate,
       ...info,
-      // birthDate: Date.parse(startDate),
       image: image,
       rating: data?.rating ? data?.rating : [],
     };
