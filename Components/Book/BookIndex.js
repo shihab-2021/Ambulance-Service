@@ -98,10 +98,6 @@ const BookIndex = () => {
   };
   const places = [
     "Banani",
-    // "Evercare Hospital Dhaka",
-    // "World University of Bangladesh",
-    // "Mirpur General Hospital & Diagnostic Centre",
-    // "Radical Hospitals Ltd.",
     "Mirpur-1",
     "Mirpur-2",
     "Mirpur 11",
@@ -172,11 +168,6 @@ const BookIndex = () => {
         "Uttara Modern Hospital",
       ],
     },
-    // "Apollo Hospitals Dhaka",
-    // "Square Hospitals Ltd.",
-    // "Ibn Sina Hospital",
-    // "United Hospital Ltd.",
-    // "Labaid Hospital",
   ];
 
   const dissesType = [
