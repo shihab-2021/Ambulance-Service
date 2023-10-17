@@ -1,3 +1,4 @@
+// footer file
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../../assets/logos/footer-logo.png";
