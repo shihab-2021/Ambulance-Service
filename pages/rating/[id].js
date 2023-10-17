@@ -30,7 +30,42 @@ const StarRating = () => {
   bday = bday?.toLocaleDateString();
   console.log(data);
 
+  const newObj = { ...data };
+
+  delete newObj.rating;
+  delete newObj._id;
+  console.log(newObj, data);
+
   const [value, setValue] = useState(0);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (newObj) {
+      const driverData = {
+        ...newObj,
+        rating: [
+          ...data?.rating,
+          {
+            reporterId: userInfo?._id,
+            reporterEmail: userInfo?.email,
+            rating: value,
+          },
+        ],
+      };
+      console.log(driverData);
+      fetch("https://rescue-reach-server.vercel.app/profile-update", {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(driverData),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            alert("Rating submitted!");
+          }
+        });
+    }
+  };
   return (
     <div>
       <Navbar />
@@ -77,7 +112,7 @@ const StarRating = () => {
             <form
               id="make-admin"
               className="my-5 text-center mx-auto"
-              // onSubmit={handleAdminSubmit}
+              onSubmit={submitHandler}
               style={{ maxWidth: "25rem" }}
             >
               <br />

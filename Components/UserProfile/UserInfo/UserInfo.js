@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { BiCommentDetail, BiHeart } from "react-icons/bi";
 import { MdOutlineDelete } from "react-icons/md";
 import { FaHeart } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 import { ImFlag } from "react-icons/im";
 import useAuth from "../../Context/useAuth";
 
@@ -415,7 +416,8 @@ const UserInfo = (props) => {
                                                 setReportReason(e.target.value)
                                               }
                                             >
-                                              {key === reportReason && (
+                                              {reportPatientReasons[key] ===
+                                                reportReason && (
                                                 <span className="pr-2 text-green-600">
                                                   <FaCheck />
                                                 </span>

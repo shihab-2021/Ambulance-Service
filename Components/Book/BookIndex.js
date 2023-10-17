@@ -98,10 +98,10 @@ const BookIndex = () => {
   };
   const places = [
     "Banani",
-    "Evercare Hospital Dhaka",
-    "World University of Bangladesh",
-    "Mirpur General Hospital & Diagnostic Centre",
-    "Radical Hospitals Ltd.",
+    // "Evercare Hospital Dhaka",
+    // "World University of Bangladesh",
+    // "Mirpur General Hospital & Diagnostic Centre",
+    // "Radical Hospitals Ltd.",
     "Mirpur-1",
     "Mirpur-2",
     "Mirpur 11",
@@ -146,20 +146,47 @@ const BookIndex = () => {
     },
   };
   const hospitalNames = [
-    "Apollo Hospitals Dhaka",
-    "Square Hospitals Ltd.",
-    "Ibn Sina Hospital",
-    "United Hospital Ltd.",
-    "Labaid Hospital",
+    {
+      place: "Banani",
+      hospitals: ["PULSE MEDICAL CENTRE LTD.", "Rainbow Hearts Madical Centre"],
+    },
+    {
+      place: "Mirpur-1",
+      hospitals: ["Mirpur Holy Crescent Hospital (Pvt.) Ltd.", "B.M. Hospital"],
+    },
+    {
+      place: "Mirpur-2",
+      hospitals: [
+        "Dr. MR Khan Shishu hospital & Institute of Child Health",
+        "B.A.V.S Maternity Hospital",
+      ],
+    },
+    {
+      place: "Mirpur 11",
+      hospitals: ["Delta Hospital Ltd.", "Exim Bank Hospital"],
+    },
+    {
+      place: "Uttara Sector-5",
+      hospitals: [
+        "Uttara Hope Hospital & Diagnostic (Pvt) Ltd.",
+        "Uttara Modern Hospital",
+      ],
+    },
+    // "Apollo Hospitals Dhaka",
+    // "Square Hospitals Ltd.",
+    // "Ibn Sina Hospital",
+    // "United Hospital Ltd.",
+    // "Labaid Hospital",
   ];
 
   const dissesType = [
     "Cardiology",
-    "Orthopedics",
+    // "Orthopedics",
     "Gastroenterology",
     "Neurology",
-    "ENT (Ear, Nose, and Throat)",
+    // "ENT (Ear, Nose, and Throat)",
   ];
+
   const [pickUpLocation, setPickUpLocation] = useState("");
   const [pickUpDropdown, setPickUpDropdown] = useState(false);
   const [dropLocation, setDropLocation] = useState("");
@@ -261,8 +288,6 @@ const BookIndex = () => {
     );
     setDoctors(filterDoctor);
   }, [hospitalName, disses]);
-
-  console.log(locations[pickUpLocation], locations[dropLocation]);
 
   return (
     <div className="my-14 mx-4 font-sansita">
@@ -578,47 +603,50 @@ const BookIndex = () => {
                 hospitalName && !disses && "lg:grid-cols-2 gap-6"
               } ${hospitalName && disses && "lg:grid-cols-3 gap-4"} `}
             >
-              <div className="relative">
-                <label className="text-black" htmlFor="dropLocation">
-                  Select Hospital
-                </label>
-                <input
-                  className="block w-full px-4 py-2 mt-2 rounded-md bg-white border border-black focus:border-red-500 focus:outline-none focus:ring"
-                  type="text"
-                  value={hospitalName}
-                  onChange={(e) => setHospitalName(e.target.value)}
-                  onFocus={() => setHospitalDropdown(true)}
-                  onBlur={() => {
-                    setHospitalName(hospitalName);
-                    setHospitalDropdown(false);
-                  }}
-                  placeholder="Type a hospital..."
-                />
-                {hospitalDropdown && (
-                  <div className="absolute z-10 bg-white border border-black mt-1 w-full rounded-md shadow-lg max-h-[250px] overflow-y-auto">
-                    {hospitalNames
-                      ?.filter((hospital) =>
-                        hospital
-                          ?.toLowerCase()
-                          ?.includes(hospitalName?.toLowerCase())
-                      )
-                      .map((hospital, index) => (
-                        <div
-                          key={index}
-                          className={`${
-                            hospital !== hospitalName ? "block" : "hidden"
-                          } px-4 py-2 cursor-pointer hover:bg-gray-100`}
-                          onMouseDown={() => {
-                            setHospitalName(hospital);
-                            setHospitalDropdown(false);
-                          }}
-                        >
-                          {hospital}
-                        </div>
-                      ))}
-                  </div>
-                )}
-              </div>
+              {dropLocation && (
+                <div className="relative">
+                  <label className="text-black" htmlFor="dropLocation">
+                    Select Hospital
+                  </label>
+                  <input
+                    className="block w-full px-4 py-2 mt-2 rounded-md bg-white border border-black focus:border-red-500 focus:outline-none focus:ring"
+                    type="text"
+                    value={hospitalName}
+                    onChange={(e) => setHospitalName(e.target.value)}
+                    onFocus={() => setHospitalDropdown(true)}
+                    onBlur={() => {
+                      setHospitalName(hospitalName);
+                      setHospitalDropdown(false);
+                    }}
+                    placeholder="Type a hospital..."
+                  />
+                  {hospitalDropdown && (
+                    <div className="absolute z-10 bg-white border border-black mt-1 w-full rounded-md shadow-lg max-h-[250px] overflow-y-auto">
+                      {hospitalNames
+                        ?.find((item) => item?.place === dropLocation)
+                        ?.hospitals?.filter((hospital) =>
+                          hospital
+                            ?.toLowerCase()
+                            ?.includes(hospitalName?.toLowerCase())
+                        )
+                        .map((hospital, index) => (
+                          <div
+                            key={index}
+                            className={`${
+                              hospital !== hospitalName ? "block" : "hidden"
+                            } px-4 py-2 cursor-pointer hover:bg-gray-100`}
+                            onMouseDown={() => {
+                              setHospitalName(hospital);
+                              setHospitalDropdown(false);
+                            }}
+                          >
+                            {hospital}
+                          </div>
+                        ))}
+                    </div>
+                  )}
+                </div>
+              )}
               {hospitalName && (
                 <div className="relative">
                   <label className="text-black" htmlFor="dropLocation">

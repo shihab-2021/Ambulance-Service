@@ -84,6 +84,7 @@ const ProfileEdit = (props) => {
       ...info,
       // birthDate: Date.parse(startDate),
       image: image,
+      rating: data?.rating ? data?.rating : [],
     };
     if (
       (userInfo?.birthDate && userInfo?.birthDate !== data?.birthDate) ||
@@ -92,7 +93,8 @@ const ProfileEdit = (props) => {
       (userInfo?.biography && userInfo?.biography !== data?.biography) ||
       (userInfo?.displayName && userInfo?.displayName !== data?.displayName) ||
       (userInfo?.gender && userInfo?.gender !== data?.gender) ||
-      (userInfo?.profession && userInfo?.profession !== data?.profession)
+      (userInfo?.profession && userInfo?.profession !== data?.profession) ||
+      (userInfo?.phone && userInfo?.phone !== data?.phone)
     ) {
       fetch("https://rescue-reach-server.vercel.app/profile-update", {
         method: "PUT",
