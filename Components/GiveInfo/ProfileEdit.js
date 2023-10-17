@@ -232,6 +232,7 @@ const ProfileEdit = (props) => {
                 setStartDate(date);
               }}
             /> */}
+            {/* I remove the Date picker package */}
           </div>
           <div className="col-span-12 flex flex-col  md:col-span-6">
             <label htmlFor="profession">Profession</label>
