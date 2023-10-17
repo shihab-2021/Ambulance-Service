@@ -51,7 +51,6 @@ const ProfileEdit = (props) => {
     const value = file.secure_url;
 
     setImage(file.secure_url);
-    // setImage(files[0])
     setImageLoading(false);
   };
 
@@ -232,7 +231,6 @@ const ProfileEdit = (props) => {
                 setStartDate(date);
               }}
             /> */}
-            {/* I remove the Date picker package */}
             {/* I remove the Date picker package */}
           </div>
           <div className="col-span-12 flex flex-col  md:col-span-6">
