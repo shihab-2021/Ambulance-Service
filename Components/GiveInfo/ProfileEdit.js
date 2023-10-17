@@ -263,56 +263,6 @@ const ProfileEdit = (props) => {
               defaultValue={data?.address}
             />
           </div>
-          {/* <div className="col-span-12 flex flex-col  md:col-span-6">
-            <label htmlFor="website">Website</label>
-            <input
-              className="rounded-md border p-2 text-lg"
-              type="text"
-              name="website"
-              {...register("website")}
-              defaultValue={data?.website}
-            />
-          </div>
-          <div className="col-span-12 flex flex-col  md:col-span-6">
-            <label htmlFor="facebook">Facebook</label>
-            <input
-              className="rounded-md border p-2 text-lg"
-              type="text"
-              name="facebook"
-              {...register("facebook")}
-              defaultValue={data?.facebook}
-            />
-          </div>
-          <div className="col-span-12 flex flex-col  md:col-span-6">
-            <label htmlFor="twitter">Twitter</label>
-            <input
-              className="rounded-md border p-2 text-lg"
-              type="text"
-              name="twitter"
-              {...register("twitter")}
-              defaultValue={data?.twitter}
-            />
-          </div>
-          <div className="col-span-12 flex flex-col  md:col-span-6">
-            <label htmlFor="linkedin">Linkedin</label>
-            <input
-              className="rounded-md border p-2 text-lg"
-              type="text"
-              name="linkedin"
-              {...register("linkedin")}
-              defaultValue={data?.linkedin}
-            />
-          </div>
-          <div className="col-span-12 flex flex-col  md:col-span-6">
-            <label htmlFor="instagram">Instagram</label>
-            <input
-              className="rounded-md border p-2 text-lg"
-              type="text"
-              name="instagram"
-              {...register("instagram")}
-              defaultValue={data?.instagram}
-            />
-          </div> */}
         </div>
         <div className="pt-3">
           <label htmlFor="biography">Biography</label>
