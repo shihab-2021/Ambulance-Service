@@ -137,6 +137,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
+      {/* main footer end */}
     </div>
   );
 };
