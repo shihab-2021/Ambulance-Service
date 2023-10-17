@@ -1,7 +1,7 @@
 import React from "react";
 import tahjidIslamTushar from "../../assets/TahjidIslamTushar.jpg";
 import atiaIbnat from "../../assets/atiaIbnat.jpg";
-import pujaKarmakar from "../../assets/pujaKarmakar.JPG";
+import pujaKarmakar from "../../assets/pujaKarmakar.jpg";
 
 const OurTeam = () => {
   return (
