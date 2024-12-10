@@ -1,34 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ambulance Service 🚑
 
-## Getting Started
+A modern and user-friendly web application for connecting users with ambulance services quickly and efficiently. This project aims to simplify the process of finding and booking emergency medical transport services.
 
-First, run the development server:
+![Ambulance Service Preview](https://i.ibb.co.com/dDtD04f/download.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## 🌐 Live Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[Ambulance Service Web Application](https://ambulance-service.vercel.app/)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 📂 Repository
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+[GitHub Repository Clint Side](https://github.com/shihab-2021/Ambulance-Service)<br />
+[GitHub Repository Server Side](https://github.com/shihab-2021/Ambulance-Service-Server-Side)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 📋 Features
 
-## Learn More
+- **User-Friendly Interface**: Intuitive and responsive design for a seamless experience.
+- **Location-Based Search**: Locate ambulances near your location quickly.
+- **Booking System**: Simplified booking of ambulance services.
+- **Real-Time Updates**: Stay updated with the availability of ambulances.
+- **Modern Design**: Built with the latest technologies and design principles.
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Technologies Used
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Frontend**: Next.js, Tailwind CSS
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Deployment**: Vercel
+- **Other Tools**: Git, GitHub, Firebase
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 🚀 Installation & Setup
 
-## Deploy on Vercel
+Follow these steps to run the project locally:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/shihab-2021/Ambulance-Service.git
+   cd Ambulance-Service
+   ```
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+3. **Start the development server**:
+   ```bash
+   npm start
+   ```
+4. **Access the application**: Open your browser and go to http://localhost:3000.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
+
+Thank you for checking out the Ambulance Service project! If you find it helpful, consider giving it a ⭐ on GitHub.
