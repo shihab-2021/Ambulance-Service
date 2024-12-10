@@ -8,7 +8,7 @@ const DoctorInfo = () => {
   const [doctors, setDoctors] = useState([]);
   useEffect(() => {
     setLoading(true);
-    fetch("https://rescue-reach-server.vercel.app/doctor")
+    fetch("https://ambulance-project-backend.vercel.app/doctor")
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);

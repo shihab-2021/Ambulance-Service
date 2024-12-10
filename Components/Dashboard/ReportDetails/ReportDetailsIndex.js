@@ -10,11 +10,11 @@ const ReportDetailsIndex = () => {
   const [otherReports, setOtherReports] = useState([]);
   useEffect(() => {
     if (id) {
-      fetch(`https://rescue-reach-server.vercel.app/report/${id}`)
+      fetch(`https://ambulance-project-backend.vercel.app/report/${id}`)
         .then((res) => res.json())
         .then((data) => setReportInfo(data))
         .then(() => {
-          fetch("https://rescue-reach-server.vercel.app/report")
+          fetch("https://ambulance-project-backend.vercel.app/report")
             .then((res) => res.json())
             .then((data) => {
               setReportedUsers(data);
@@ -63,7 +63,7 @@ const ReportDetailsIndex = () => {
     }).then((willDelete) => {
       if (willDelete) {
         const url = fetch(
-          `https://rescue-reach-server.vercel.app/delete-user/${reportInfo?.reportedTo?._id}`,
+          `https://ambulance-project-backend.vercel.app/delete-user/${reportInfo?.reportedTo?._id}`,
           {
             method: "DELETE",
           }
@@ -71,7 +71,7 @@ const ReportDetailsIndex = () => {
           .then((res) => res.json())
           .then(() =>
             fetch(
-              `https://rescue-reach-server.vercel.app/delete-report/${reportInfo?._id}`,
+              `https://ambulance-project-backend.vercel.app/delete-report/${reportInfo?._id}`,
               {
                 method: "DELETE",
               }

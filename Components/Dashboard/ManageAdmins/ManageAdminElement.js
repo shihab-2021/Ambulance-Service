@@ -11,7 +11,7 @@ const ManageAdminElement = ({ data, remainingUsers, i }) => {
     }).then((willDelete) => {
       if (willDelete) {
         remainingUsers(data._id);
-        fetch(`https://rescue-reach-server.vercel.app/users/user`, {
+        fetch(`https://ambulance-project-backend.vercel.app/users/user`, {
           method: "PUT",
           headers: {
             "content-type": "application/json",

@@ -11,7 +11,7 @@ const PaymentIndex = () => {
   const { user, userInfo } = useAuth();
 
   useEffect(() => {
-    fetch("https://rescue-reach-server.vercel.app/rideBooked")
+    fetch("https://ambulance-project-backend.vercel.app/rideBooked")
       .then((res) => res.json())
       .then((data) => {
         if (userInfo?.role === "Driver") {

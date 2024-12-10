@@ -14,7 +14,7 @@ const UserDetailsPage = ({}) => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://rescue-reach-server.vercel.app/user/${id}`)
+    fetch(`https://ambulance-project-backend.vercel.app/user/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);

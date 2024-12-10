@@ -41,7 +41,7 @@ const MyRidesIndex = () => {
           ),
         };
         setIsLoading(true);
-        fetch("https://rescue-reach-server.vercel.app/report")
+        fetch("https://ambulance-project-backend.vercel.app/report")
           .then((res) => res.json())
           .then((data) => {
             const reportCheck = data?.find(
@@ -59,7 +59,7 @@ const MyRidesIndex = () => {
               setIsLoading(false);
               setOpenReport(false);
             } else {
-              fetch("https://rescue-reach-server.vercel.app/report", {
+              fetch("https://ambulance-project-backend.vercel.app/report", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
@@ -118,7 +118,7 @@ const MyRidesIndex = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("https://rescue-reach-server.vercel.app/rideBooked")
+    fetch("https://ambulance-project-backend.vercel.app/rideBooked")
       .then((res) => res.json())
       .then((data) => {
         if (userInfo?.role === "Driver") {
@@ -132,7 +132,7 @@ const MyRidesIndex = () => {
           );
           setBookedRides(booked);
         }
-        fetch("https://rescue-reach-server.vercel.app/rideCompleted")
+        fetch("https://ambulance-project-backend.vercel.app/rideCompleted")
           .then((res) => res.json())
           .then((data) => {
             if (userInfo?.role === "Driver") {

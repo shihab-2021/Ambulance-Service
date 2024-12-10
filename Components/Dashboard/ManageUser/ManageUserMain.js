@@ -8,7 +8,7 @@ const ManageUserMain = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://rescue-reach-server.vercel.app/users")
+    fetch("https://ambulance-project-backend.vercel.app/users")
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);

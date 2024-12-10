@@ -21,7 +21,7 @@ const MyPendingRideDetails = () => {
 
   useEffect(() => {
     if (id) {
-      fetch(`https://rescue-reach-server.vercel.app/rideBooked/${id}`)
+      fetch(`https://ambulance-project-backend.vercel.app/rideBooked/${id}`)
         .then((res) => res.json())
         .then((data) => setData(data))
         .catch((error) => {
@@ -59,7 +59,7 @@ const MyPendingRideDetails = () => {
     }).then((willDelete) => {
       if (willDelete) {
         setIsLoading(true);
-        fetch("https://rescue-reach-server.vercel.app/rideRequest", {
+        fetch("https://ambulance-project-backend.vercel.app/rideRequest", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -76,7 +76,7 @@ const MyPendingRideDetails = () => {
               data?.patientSide
             ),
           };
-          fetch("https://rescue-reach-server.vercel.app/report", {
+          fetch("https://ambulance-project-backend.vercel.app/report", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -88,7 +88,7 @@ const MyPendingRideDetails = () => {
             swal("Report send successfully!", {
               icon: "success",
             });
-            const url = `https://rescue-reach-server.vercel.app/delete-rideBooked/${data?._id}`;
+            const url = `https://ambulance-project-backend.vercel.app/delete-rideBooked/${data?._id}`;
             fetch(url, {
               method: "DELETE",
             })

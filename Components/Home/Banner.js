@@ -10,7 +10,7 @@ const Banner = () => {
     <div>
       <div className="mt-3">
         <Image
-          src={BannerBD}
+          src={banner}
           className="w-full h-[40vh] lg:h-full rounded-2xl shadow-md shadow-red-400"
         />
       </div>

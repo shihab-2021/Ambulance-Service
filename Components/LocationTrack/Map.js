@@ -24,7 +24,7 @@ const Map = () => {
     const fetchActiveUsers = async () => {
       try {
         const response = await fetch(
-          "https://rescue-reach-server.vercel.app/active-users"
+          "https://ambulance-project-backend.vercel.app/active-users"
         );
         const data = await response.json();
         setActiveUsers(data);

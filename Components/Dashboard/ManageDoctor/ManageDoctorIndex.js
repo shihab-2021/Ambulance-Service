@@ -9,7 +9,7 @@ const ManageDoctorIndex = () => {
   const [selectedDoctor, setSelectedDoctor] = useState({});
   useEffect(() => {
     setLoading(true);
-    fetch("https://rescue-reach-server.vercel.app/doctor")
+    fetch("https://ambulance-project-backend.vercel.app/doctor")
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);
@@ -25,7 +25,7 @@ const ManageDoctorIndex = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        const url = `https://rescue-reach-server.vercel.app/delete-doctor/${data?._id}`;
+        const url = `https://ambulance-project-backend.vercel.app/delete-doctor/${data?._id}`;
         fetch(url, {
           method: "DELETE",
         })

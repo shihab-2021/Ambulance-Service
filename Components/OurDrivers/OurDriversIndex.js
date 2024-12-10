@@ -6,7 +6,7 @@ const OurDriversIndex = ({ driver }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [drivers, setDrivers] = useState([]);
   useEffect(() => {
-    fetch("https://rescue-reach-server.vercel.app/users")
+    fetch("https://ambulance-project-backend.vercel.app/users")
       .then((res) => res.json())
       .then((data) => {
         const allDriver = data?.filter((item) => item?.role === "Driver");

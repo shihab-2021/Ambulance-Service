@@ -22,7 +22,7 @@ const RideRequestDetailsMain = () => {
 
   useEffect(() => {
     if (id) {
-      fetch(`https://rescue-reach-server.vercel.app/rideRequest/${id}`)
+      fetch(`https://ambulance-project-backend.vercel.app/rideRequest/${id}`)
         .then((res) => res.json())
         .then((data) => setData(data))
         .catch((error) => {
@@ -83,7 +83,7 @@ const RideRequestDetailsMain = () => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch("https://rescue-reach-server.vercel.app/rideBooked", {
+        fetch("https://ambulance-project-backend.vercel.app/rideBooked", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -93,7 +93,7 @@ const RideRequestDetailsMain = () => {
             driverSide: driverSide,
           }),
         }).then(() => {
-          const url = `https://rescue-reach-server.vercel.app/delete-rideRequest/${id}`;
+          const url = `https://ambulance-project-backend.vercel.app/delete-rideRequest/${id}`;
           fetch(url, {
             method: "DELETE",
           })

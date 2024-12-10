@@ -11,7 +11,7 @@ const ManageUserElement = ({ data, remainingUsers, i }) => {
     }).then((willDelete) => {
       if (willDelete) {
         remainingUsers(data?._id);
-        const url = `https://rescue-reach-server.vercel.app/delete-user/${data?._id}`;
+        const url = `https://ambulance-project-backend.vercel.app/delete-user/${data?._id}`;
         fetch(url, {
           method: "DELETE",
         })

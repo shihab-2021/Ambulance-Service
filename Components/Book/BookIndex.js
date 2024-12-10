@@ -246,7 +246,7 @@ const BookIndex = () => {
       };
       console.log(rideInfo);
       setIsLoading(true);
-      fetch("https://rescue-reach-server.vercel.app/rideRequest", {
+      fetch("https://ambulance-project-backend.vercel.app/rideRequest", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -266,7 +266,7 @@ const BookIndex = () => {
   };
 
   useEffect(() => {
-    fetch("https://rescue-reach-server.vercel.app/doctor")
+    fetch("https://ambulance-project-backend.vercel.app/doctor")
       .then((res) => res.json())
       .then((data) => {
         setAllDoctors(data);
