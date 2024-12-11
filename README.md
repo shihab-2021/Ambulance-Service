@@ -29,22 +29,47 @@ A modern and user-friendly web application for connecting users with ambulance s
 
 ## 🚀 Installation & Setup
 
-Follow these steps to run the project locally:
+### Clone the Repositories
+```bash
+# Clone client-side repository
+git clone https://github.com/shihab-2021/Ambulance-Service.git
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/shihab-2021/Ambulance-Service.git
-   cd Ambulance-Service
-   ```
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-3. **Start the development server**:
-   ```bash
-   npm start
-   ```
-4. **Access the application**: Open your browser and go to http://localhost:3000.
+# Clone server-side repository
+git clone https://github.com/shihab-2021/Ambulance-Service-Server-Side.git
+```
+### Frontend Setup
+```bash
+# Navigate to the client directory
+cd Universal-Hostel-Management-System
+
+# Install dependencies
+npm install
+
+# Create a .env.local file and add necessary environment variables
+# Example:
+# NEXT_PUBLIC_API_URL=http://localhost:5000
+
+# Run the development server
+npm run dev
+```
+
+### Backend Setup
+```bash
+# Navigate to the server directory
+cd Universal-Hostel-Server-Side-Code
+
+# Install dependencies
+npm install
+
+# Create a .env file and add necessary environment variables
+# Example:
+# MONGODB_URI=mongodb://localhost:27017/hostel_management
+# PORT=5000
+# JWT_SECRET=your_jwt_secret
+
+# Run the server
+npm start
+```
 
 ---
 
