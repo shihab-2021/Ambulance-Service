@@ -8,7 +8,7 @@ A modern and user-friendly web application for connecting users with ambulance s
 [Ambulance Service Web Application](https://ambulance-service.vercel.app/)
 
 ## 📂 Repository
-- [GitHub Repository Clint Side](https://github.com/shihab-2021/Ambulance-Service)
+- [GitHub Repository Client Side](https://github.com/shihab-2021/Ambulance-Service)
 - [GitHub Repository Server Side](https://github.com/shihab-2021/Ambulance-Service-Server-Side)
 
 ## 📋 Features
